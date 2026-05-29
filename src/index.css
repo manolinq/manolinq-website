@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: #06060c;
+    color: #e2e2e8;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  * { box-sizing: border-box; }
+}
+
+@layer components {
+
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2.5 bg-electric-500 text-white font-semibold
+           px-7 py-3.5 rounded-xl tracking-[-0.01em] text-[0.93rem]
+           transition-all duration-200
+           hover:bg-electric-400 hover:-translate-y-[2px]
+           hover:shadow-[0_4px_24px_rgba(12,147,232,0.45),0_0_0_1px_rgba(12,147,232,0.2)]
+           active:translate-y-0 active:shadow-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2.5 border border-white/[0.1] text-white/60
+           font-semibold px-7 py-3.5 rounded-xl tracking-[-0.01em] text-[0.93rem]
+           transition-all duration-200
+           hover:border-electric-500/40 hover:text-white hover:bg-white/[0.04] hover:-translate-y-[2px]
+           active:translate-y-0;
+  }
+
+  /* ── Eyebrow tag ── */
+  .section-tag {
+    @apply inline-flex items-center gap-2 text-electric-400 text-[0.68rem]
+           font-semibold tracking-[0.22em] uppercase mb-5;
+  }
+
+  /* ── Cards ── */
+  .card-dark {
+    @apply bg-[#0b0b15] border border-white/[0.065] rounded-2xl p-7
+           transition-all duration-300
+           hover:border-electric-500/[0.22] hover:bg-[#0d0d1a]
+           hover:shadow-[0_0_40px_rgba(12,147,232,0.07),0_1px_0_rgba(255,255,255,0.04)_inset];
+  }
+
+  .card-featured {
+    @apply bg-gradient-to-b from-[#0d1628] to-[#090914]
+           border-2 border-electric-500/[0.28] rounded-2xl p-7
+           shadow-[0_0_60px_rgba(12,147,232,0.12),0_0_0_1px_rgba(12,147,232,0.1)];
+  }
+
+  /* ── Text gradients ── */
+  .electric-gradient-text {
+    @apply bg-gradient-to-r from-electric-300 via-electric-400 to-electric-500
+           bg-clip-text text-transparent;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent;
+  }
+
+  /* ── Inputs ── */
+  .input-dark {
+    @apply w-full bg-[#0b0b15] border border-white/[0.08] rounded-xl
+           px-4 py-3 text-white placeholder-white/20
+           focus:outline-none focus:border-electric-500/50
+           focus:bg-[#0d0d1a] focus:shadow-[0_0_0_3px_rgba(12,147,232,0.09)]
+           transition-all duration-200 text-[0.88rem];
+  }
+
+  /* ── Section separator ── */
+  .section-divider {
+    @apply absolute left-0 right-0 h-px
+           bg-gradient-to-r from-transparent via-white/[0.055] to-transparent
+           pointer-events-none;
+  }
+
+  /* ── Noise overlay ── */
+  .noise-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+@layer utilities {
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-400 { animation-delay: 400ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
+  .animate-delay-600 { animation-delay: 600ms; }
+}
+
+/* ── Anchor offset — clears sticky navbar on scroll-to ── */
+section[id] {
+  scroll-margin-top: 100px;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar        { width: 4px; }
+::-webkit-scrollbar-track  { background: #06060c; }
+::-webkit-scrollbar-thumb  { background: #181828; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #0c93e8; }
+
+/* ── Grid background ── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(12,147,232,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(12,147,232,0.022) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* ── Hero shimmer line ── */
+.shimmer-line {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(12,147,232,0.5) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ── Glowing border on featured card ── */
+.glow-border-blue {
+  box-shadow:
+    0 0 0 1px rgba(12,147,232,0.2),
+    0 0 60px rgba(12,147,232,0.12),
+    0 0 120px rgba(12,147,232,0.05);
+}
+
+/* ── Gradient noise texture for section backgrounds ── */
+.section-alt {
+  background:
+    radial-gradient(ellipse 120% 60% at 50% 0%, rgba(12,147,232,0.055) 0%, transparent 70%),
+    #07070f;
+}
+
+.section-dark {
+  background:
+    radial-gradient(ellipse 100% 50% at 50% 100%, rgba(12,147,232,0.04) 0%, transparent 70%),
+    #05050b;
+}
