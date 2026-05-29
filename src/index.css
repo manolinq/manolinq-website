@@ -61,12 +61,30 @@
 
   /* ── Text gradients ── */
   .electric-gradient-text {
-    @apply bg-gradient-to-r from-electric-300 via-electric-400 to-electric-500
-           bg-clip-text text-transparent;
+    display: inline-block;
+    background-image: linear-gradient(90deg, #93d4fd, #36aff7, #0c93e8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    /* Fallback: if gradient fails, show readable blue */
+    @supports not (-webkit-background-clip: text) {
+      color: #36aff7;
+      -webkit-text-fill-color: initial;
+    }
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent;
+    display: inline-block;
+    background-image: linear-gradient(90deg, #ffffff, rgba(255,255,255,0.6));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    @supports not (-webkit-background-clip: text) {
+      color: #ffffff;
+      -webkit-text-fill-color: initial;
+    }
   }
 
   /* ── Inputs ── */

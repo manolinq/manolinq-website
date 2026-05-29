@@ -75,7 +75,7 @@ export default function Services() {
           }`}
         >
           <div className="section-tag">
-            <span className="w-1 h-3.5 bg-electric-500 rounded-full flex-shrink-0" />
+            <span style={{ display: 'inline-block', width: 4, height: 14, borderRadius: 9999, background: '#0c93e8', flexShrink: 0 }} />
             What We Build
           </div>
           <h2

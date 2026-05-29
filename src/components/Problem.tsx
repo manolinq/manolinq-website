@@ -44,7 +44,7 @@ export default function Problem() {
           }`}
         >
           <div className="section-tag">
-            <span className="w-1 h-3.5 bg-red-500/70 rounded-full" />
+            <span style={{ display: 'inline-block', width: 4, height: 14, borderRadius: 9999, background: 'rgba(239,68,68,0.7)', flexShrink: 0 }} />
             The Problem
           </div>
           <h2
