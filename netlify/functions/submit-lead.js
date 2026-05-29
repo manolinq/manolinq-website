@@ -44,7 +44,6 @@ exports.handler = async (event) => {
     };
   }
 
-  // Validate required fields
   for (const field of REQUIRED_FIELDS) {
     if (!body[field] || !String(body[field]).trim()) {
       return {
@@ -55,7 +54,6 @@ exports.handler = async (event) => {
     }
   }
 
-  // Basic email format check
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRe.test(body.email)) {
     return {
@@ -94,7 +92,8 @@ exports.handler = async (event) => {
     };
   }
 
-  // Send Telegram notification — non-blocking, never fails the request
+  // Send Telegram notification after successful Supabase insert.
+  // Failures here are logged but never surface as an error to the caller.
   const botToken = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
 
