@@ -134,14 +134,17 @@ function TextAreaField({
   );
 }
 
+const EMPTY_FORM: FormData = {
+  name: '', businessName: '', email: '',
+  whatsapp: '', service: '', budget: '', message: '',
+};
+
 export default function Contact() {
   const { ref, inView } = useInView();
-  const [form, setForm] = useState<FormData>({
-    name: '', businessName: '', email: '',
-    whatsapp: '', service: '', budget: '', message: '',
-  });
+  const [form, setForm] = useState<FormData>(EMPTY_FORM);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -149,10 +152,44 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMsg('');
+
+    // Client-side required field guard
+    if (!form.name.trim() || !form.businessName.trim() || !form.email.trim() || !form.service) {
+      setErrorMsg('Please fill in all required fields.');
+      return;
+    }
+
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
+    try {
+      const res = await fetch('/.netlify/functions/submit-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name:            form.name.trim(),
+          business_name:   form.businessName.trim(),
+          email:           form.email.trim(),
+          whatsapp_number: form.whatsapp.trim(),
+          service_needed:  form.service,
+          budget_range:    form.budget,
+          message:         form.message.trim(),
+          source:          'manolinq_website',
+          page_url:        window.location.href,
+          user_agent:      navigator.userAgent,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error('Server error');
+      }
+
+      setForm(EMPTY_FORM);
+      setSubmitted(true);
+    } catch {
+      setErrorMsg('Something went wrong. Please try again or message us on WhatsApp.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -252,10 +289,10 @@ export default function Contact() {
                   <CheckCircle size={28} strokeWidth={1.75} className="text-electric-400" />
                 </div>
                 <h3 className="text-white font-bold text-[1.5rem] tracking-[-0.025em] mb-3">
-                  Message received!
+                  Request sent!
                 </h3>
                 <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.9rem', maxWidth: '20rem', lineHeight: 1.8 }}>
-                  Thanks for reaching out. We'll review your info and get back to you within 24 hours.
+                  Thanks — your request has been sent. We'll reply within 24 hours.
                 </p>
               </div>
             ) : (
@@ -343,6 +380,21 @@ export default function Contact() {
                     <>Request Free Audit<Send size={15} strokeWidth={2} /></>
                   )}
                 </button>
+
+                {errorMsg && (
+                  <p style={{
+                    color: 'rgba(248,113,113,0.9)',
+                    fontSize: '0.82rem',
+                    textAlign: 'center',
+                    lineHeight: 1.6,
+                    padding: '0.65rem 1rem',
+                    background: 'rgba(220,38,38,0.08)',
+                    border: '1px solid rgba(220,38,38,0.2)',
+                    borderRadius: '0.75rem',
+                  }}>
+                    {errorMsg}
+                  </p>
+                )}
 
                 <p style={{ color: 'rgba(255,255,255,0.28)', fontSize: '0.78rem', textAlign: 'center', letterSpacing: '0.02em' }}>
                   We reply within 24 hours. No spam, ever.
