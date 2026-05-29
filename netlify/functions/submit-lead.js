@@ -94,6 +94,40 @@ exports.handler = async (event) => {
     };
   }
 
+  // Send Telegram notification — non-blocking, never fails the request
+  const botToken = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+
+  if (botToken && chatId) {
+    const text =
+      `🔥 New Manolinq Lead\n\n` +
+      `Name: ${lead.name}\n` +
+      `Business: ${lead.business_name}\n` +
+      `Email: ${lead.email}\n` +
+      `WhatsApp: ${lead.whatsapp_number || '—'}\n` +
+      `Service: ${lead.service_needed}\n` +
+      `Budget: ${lead.budget_range || '—'}\n` +
+      `Message:\n${lead.message || '—'}\n\n` +
+      `Source: manolinq_website`;
+
+    try {
+      const tgRes = await fetch(
+        `https://api.telegram.org/bot${botToken}/sendMessage`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: chatId, text }),
+        }
+      );
+      if (!tgRes.ok) {
+        const tgBody = await tgRes.text();
+        console.error('Telegram API error:', tgRes.status, tgBody);
+      }
+    } catch (tgErr) {
+      console.error('Telegram fetch error:', tgErr);
+    }
+  }
+
   return {
     statusCode: 200,
     headers: cors,
