@@ -369,20 +369,19 @@ export default function ChatBot() {
   };
 
   return (
-    /* Fixed dock — bottom-right anchor */
+    /* Fixed dock — bottom-right anchor with safe-area awareness */
     <div
       className="fixed z-50"
       style={{
-        right: 28,
-        bottom: 28,
-        // safe-area fallback
-        paddingBottom: 'env(safe-area-inset-bottom)',
+        right: 'max(16px, env(safe-area-inset-right, 16px))',
+        /* safe-area-inset-bottom ensures we clear home bar on iOS */
+        bottom: 'calc(20px + env(safe-area-inset-bottom, 0px))',
       }}
     >
       {/* ── Chat window — always rendered, animated open/close ── */}
       <div
         className="mb-3"
-        style={{ width: 370, maxWidth: 'calc(100vw - 56px)' }}
+        style={{ width: 370, maxWidth: 'calc(100vw - 32px)' }}
       >
         <ChatWindow open={chatOpen} onClose={() => setChatOpen(false)} />
       </div>
@@ -401,6 +400,7 @@ export default function ChatBot() {
           style={{
             width: 44,
             height: 44,
+            minWidth: 44,
             background: 'rgba(22,163,74,0.15)',
             border: '1px solid rgba(34,197,94,0.28)',
             boxShadow: '0 4px 18px rgba(34,197,94,0.18), 0 0 0 1px rgba(34,197,94,0.1)',

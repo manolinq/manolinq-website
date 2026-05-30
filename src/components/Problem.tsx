@@ -67,11 +67,15 @@ export default function Problem() {
               key={point.title}
               className={`group relative rounded-2xl overflow-hidden flex flex-col
                           transition-all duration-500 ease-out
+                          active:scale-[0.985] active:brightness-110
                           ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
               style={{
                 background: 'linear-gradient(160deg, #0d0d1c 0%, #090910 100%)',
-                border: '1px solid rgba(255,255,255,0.07)',
-                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04)',
+                /* Mobile: always show subtle red accent border and glow */
+                border: '1px solid rgba(220,38,38,0.16)',
+                boxShadow:
+                  'inset 0 1px 0 rgba(255,255,255,0.04),' +
+                  '0 0 24px rgba(220,38,38,0.05)',
                 transitionDelay: `${i * 130 + 200}ms`,
               }}
               onMouseEnter={(e) => {
@@ -86,17 +90,19 @@ export default function Problem() {
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget as HTMLDivElement;
-                el.style.border = '1px solid rgba(255,255,255,0.07)';
+                el.style.border = '1px solid rgba(220,38,38,0.16)';
                 el.style.background = 'linear-gradient(160deg, #0d0d1c 0%, #090910 100%)';
-                el.style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,0.04)';
+                el.style.boxShadow =
+                  'inset 0 1px 0 rgba(255,255,255,0.04),' +
+                  '0 0 24px rgba(220,38,38,0.05)';
                 el.style.transform = 'translateY(0)';
               }}
             >
-              {/* Top accent line — visible on hover via opacity trick in sibling */}
+              {/* Top accent line — always visible on mobile, brightens on hover */}
               <div
-                className="absolute top-0 left-0 right-0 h-[1px] opacity-0
-                            group-hover:opacity-100 transition-opacity duration-500"
-                style={{ background: 'linear-gradient(90deg, transparent, rgba(220,38,38,0.35), transparent)' }}
+                className="absolute top-0 left-0 right-0 h-[1px]
+                            opacity-40 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ background: 'linear-gradient(90deg, transparent, rgba(220,38,38,0.5), transparent)' }}
               />
 
               {/* Ghost number */}

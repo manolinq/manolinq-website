@@ -103,13 +103,16 @@ export default function Packages() {
             <div
               key={pkg.name}
               className={`relative flex flex-col rounded-2xl overflow-hidden
-                          transition-all duration-700
+                          transition-all duration-700 active:scale-[0.985] active:brightness-105
                           ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
                           ${pkg.featured
-                            ? 'glow-border-blue bg-gradient-to-b from-[#0c1628]/90 via-[#090b18] to-[#07070f] border border-electric-500/[0.25]'
-                            : 'bg-[#0b0b15] border border-white/[0.065] hover:border-electric-500/[0.16] hover:bg-[#0d0d1a] hover:shadow-[0_0_40px_rgba(12,147,232,0.05)] transition-colors duration-300'
+                            ? 'order-first md:order-none glow-border-blue bg-gradient-to-b from-[#0c1628]/90 via-[#090b18] to-[#07070f] border border-electric-500/[0.25]'
+                            : 'bg-[#0b0b15] border border-[rgba(12,147,232,0.12)] hover:border-electric-500/[0.22] hover:bg-[#0d0d1a] hover:shadow-[0_0_40px_rgba(12,147,232,0.07)] transition-colors duration-300'
                           }`}
-              style={{ transitionDelay: `${i * 130}ms` }}
+              style={{
+                transitionDelay: `${i * 130}ms`,
+                ...(!pkg.featured ? { boxShadow: '0 0 20px rgba(12,147,232,0.04)' } : {}),
+              }}
             >
               {/* Featured shimmer */}
               {pkg.featured && (

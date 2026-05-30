@@ -49,18 +49,20 @@ export default function Navbar() {
     >
       <nav
         className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 flex items-center justify-between"
-        style={{ height: '72px' }}
+        style={{ height: 64 }}
       >
         {/* Logo */}
         <a
           href="#"
           onClick={(e) => handleNavClick(e, '#')}
-          className="flex items-center flex-shrink-0 focus-visible:outline-none rounded py-2"
+          className="flex items-center flex-shrink-0 focus-visible:outline-none"
+          style={{ lineHeight: 0 }}
         >
           <img
             src="/manolinq-logo-transparent.svg"
             alt="Manolinq"
-            className="h-[36px] sm:h-[42px] w-auto object-contain block"
+            className="w-auto object-contain block"
+            style={{ height: 'clamp(30px, 5vw, 40px)', display: 'block' }}
             draggable={false}
           />
         </a>
@@ -104,8 +106,10 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-white/50 hover:text-white transition-colors p-2
-                     rounded-lg hover:bg-white/[0.05]"
+          className="md:hidden text-white/50 hover:text-white transition-colors
+                     flex items-center justify-center rounded-lg hover:bg-white/[0.05]
+                     active:bg-white/[0.08]"
+          style={{ width: 40, height: 40 }}
           onClick={() => setMenuOpen((v) => !v)}
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}

@@ -21,7 +21,8 @@ export default function Footer() {
       <div className="absolute top-0 left-0 right-0 h-[1px]
                       bg-gradient-to-r from-transparent via-electric-500/[0.18] to-transparent" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10 sm:pb-10"
+           style={{ paddingBottom: 'calc(2.5rem + env(safe-area-inset-bottom, 0px))' }}>
         <div className="grid sm:grid-cols-3 gap-10 mb-14">
 
           {/* Brand */}

@@ -54,12 +54,12 @@ export default function Hero() {
       {/* ── Content wrapper ── */}
       <div
         className="relative z-10 w-full mx-auto
-                   pt-28 pb-10 lg:pt-0 lg:pb-0 lg:min-h-screen lg:flex lg:items-center"
+                   pb-10 lg:pt-0 lg:pb-0 lg:min-h-screen lg:flex lg:items-center"
         style={{ maxWidth: '1440px', padding: '0 clamp(20px, 5vw, 80px)' }}
       >
         <div
           className="grid lg:grid-cols-[1fr_1.1fr] gap-12 xl:gap-20 items-center w-full
-                     pt-28 pb-12 lg:pt-0 lg:pb-0"
+                     pt-24 pb-16 lg:pt-0 lg:pb-0"
         >
 
           {/* ══ LEFT ══ */}
@@ -89,9 +89,9 @@ export default function Hero() {
             <h1
               className={`font-extrabold mb-7 ${vis(100)}`}
               style={{
-                fontSize: 'clamp(2.6rem, 4.1vw, 3.75rem)',
-                lineHeight: 1.04,
-                letterSpacing: '-0.036em',
+                fontSize: 'clamp(2.1rem, 5.5vw, 3.75rem)',
+                lineHeight: 1.06,
+                letterSpacing: '-0.034em',
               }}
             >
               <span style={{ color: '#f2f2f6' }}>Websites & AI Systems</span>
@@ -130,9 +130,9 @@ export default function Hero() {
                 href="#contact"
                 className="inline-flex items-center justify-center gap-2.5
                            font-semibold text-white text-[0.88rem] tracking-[-0.01em]
-                           px-7 py-[14px] rounded-xl
+                           px-7 py-[14px] rounded-xl w-full sm:w-auto
                            transition-all duration-200
-                           hover:-translate-y-[2px] active:translate-y-0"
+                           active:scale-[0.98] active:translate-y-0"
                 style={{
                   background: 'linear-gradient(160deg, #1a9ef5 0%, #0a88d8 100%)',
                   boxShadow:
@@ -166,9 +166,9 @@ export default function Hero() {
                 href="#services"
                 className="inline-flex items-center justify-center gap-2.5
                            font-semibold text-[0.88rem] tracking-[-0.01em]
-                           px-7 py-[14px] rounded-xl
+                           px-7 py-[14px] rounded-xl w-full sm:w-auto
                            transition-all duration-200
-                           hover:-translate-y-[1px] active:translate-y-0"
+                           active:scale-[0.98] active:translate-y-0"
                 style={{
                   color: 'rgba(226,226,232,0.56)',
                   border: '1px solid rgba(255,255,255,0.13)',
@@ -226,8 +226,8 @@ export default function Hero() {
               style={{ background: 'radial-gradient(ellipse at center, rgba(12,147,232,0.22) 0%, rgba(12,147,232,0.06) 45%, transparent 68%)' }}
             />
 
-            {/* Perspective shell */}
-            <div className="relative" style={{ perspective: '1000px' }}>
+            {/* Perspective shell — overflow hidden on mobile so floaters don't bleed */}
+            <div className="relative overflow-hidden lg:overflow-visible" style={{ perspective: '1000px' }}>
 
               {/* ── MAIN BROWSER CARD ── */}
               <div

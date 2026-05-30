@@ -209,7 +209,7 @@ function StepCard({ step, index, inView }: { step: Step; index: number; inView: 
     <div
       className={`relative z-10 text-center flex flex-col items-center
                   rounded-2xl px-5 pt-7 pb-7 cursor-default
-                  transition-all duration-400
+                  active:scale-[0.985]
                   ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
       style={{
         background: 'rgba(255,255,255,0.012)',
@@ -283,7 +283,8 @@ function MobileStep({
           className="w-10 h-10 rounded-xl flex items-center justify-center"
           style={{
             background: 'linear-gradient(160deg, #0d0d1e 0%, #090910 100%)',
-            border: '1px solid rgba(255,255,255,0.09)',
+            border: '1px solid rgba(12,147,232,0.2)',
+            boxShadow: '0 0 12px rgba(12,147,232,0.08)',
           }}
         >
           <step.icon size={17} strokeWidth={1.75} style={{ color: 'rgba(54,175,247,0.8)' }} />
@@ -300,11 +301,14 @@ function MobileStep({
 
       {/* Right column: text */}
       <div
-        className="flex-1 rounded-xl px-4 py-4 mb-4"
+        className="flex-1 rounded-xl px-4 py-4 mb-4 active:scale-[0.985] active:brightness-110
+                   transition-all duration-200"
         style={{
-          background: 'rgba(255,255,255,0.015)',
-          border: '1px solid rgba(255,255,255,0.06)',
-          boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.03)',
+          background: 'rgba(255,255,255,0.018)',
+          border: '1px solid rgba(12,147,232,0.14)',
+          boxShadow:
+            'inset 0 1px 0 rgba(255,255,255,0.03),' +
+            '0 0 16px rgba(12,147,232,0.05)',
         }}
       >
         <div className="flex items-center gap-2 mb-2">

@@ -124,11 +124,11 @@ function ServiceCard({
   const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
     if (service.featured) return;
     const el = e.currentTarget;
-    el.style.border = '1px solid rgba(12,147,232,0.2)';
+    el.style.border = '1px solid rgba(12,147,232,0.22)';
     el.style.background = 'linear-gradient(160deg, #0d0d1e 0%, #09090f 100%)';
     el.style.boxShadow =
       'inset 0 1px 0 rgba(255,255,255,0.05),' +
-      '0 0 44px rgba(12,147,232,0.07),' +
+      '0 0 44px rgba(12,147,232,0.09),' +
       '0 20px 60px rgba(0,0,0,0.35)';
     el.style.transform = 'translateY(-4px)';
   };
@@ -136,9 +136,11 @@ function ServiceCard({
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     if (service.featured) return;
     const el = e.currentTarget;
-    el.style.border = '1px solid rgba(255,255,255,0.07)';
+    el.style.border = '1px solid rgba(12,147,232,0.13)';
     el.style.background = 'linear-gradient(160deg, #0c0c1a 0%, #090910 100%)';
-    el.style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,0.04)';
+    el.style.boxShadow =
+      'inset 0 1px 0 rgba(255,255,255,0.04),' +
+      '0 0 20px rgba(12,147,232,0.05)';
     el.style.transform = 'translateY(0)';
   };
 
@@ -154,15 +156,18 @@ function ServiceCard({
       }
     : {
         background: 'linear-gradient(160deg, #0c0c1a 0%, #090910 100%)',
-        border: '1px solid rgba(255,255,255,0.07)',
-        boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04)',
+        /* Mobile: subtle blue default glow */
+        border: '1px solid rgba(12,147,232,0.13)',
+        boxShadow:
+          'inset 0 1px 0 rgba(255,255,255,0.04),' +
+          '0 0 20px rgba(12,147,232,0.05)',
         transition: 'all 0.4s cubic-bezier(0.22,1,0.36,1)',
       };
 
   return (
     <div
       className={`relative flex flex-col rounded-2xl overflow-hidden
-                  transition-all duration-700
+                  transition-all duration-700 active:scale-[0.985] active:brightness-105
                   ${service.featured ? 'order-first md:order-none' : ''}
                   ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
       style={{ ...baseStyle, transitionDelay: `${index * 130}ms` }}
