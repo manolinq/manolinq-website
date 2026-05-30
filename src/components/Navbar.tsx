@@ -58,11 +58,26 @@ export default function Navbar() {
           className="flex items-center flex-shrink-0 focus-visible:outline-none"
           style={{ lineHeight: 0 }}
         >
+          {/* Mobile logo — explicit width so the two SVG text nodes never gap */}
           <img
             src="/manolinq-logo-transparent.svg"
             alt="Manolinq"
-            className="w-auto object-contain block"
-            style={{ height: 'clamp(30px, 5vw, 40px)', display: 'block' }}
+            className="block md:hidden"
+            style={{
+              width: 154,
+              height: 'auto',
+              maxWidth: 170,
+              objectFit: 'contain',
+              display: 'block',
+            }}
+            draggable={false}
+          />
+          {/* Desktop logo — height-driven as before */}
+          <img
+            src="/manolinq-logo-transparent.svg"
+            alt="Manolinq"
+            className="hidden md:block w-auto object-contain"
+            style={{ height: 'clamp(34px, 3.2vw, 42px)', display: 'block' }}
             draggable={false}
           />
         </a>
