@@ -55,24 +55,15 @@ export default function Navbar() {
         <a
           href="#"
           onClick={(e) => handleNavClick(e, '#')}
-          className="focus-visible:outline-none"
-          style={{ display: 'flex', alignItems: 'center', flexShrink: 0, overflow: 'visible', gap: 0, lineHeight: 0 }}
+          className="flex items-center flex-shrink-0 focus-visible:outline-none"
+          style={{ lineHeight: 0 }}
         >
-          {/* Mobile logo */}
           <img
             src="/manolinq-logo-transparent.svg"
             alt="Manolinq"
-            draggable={false}
-            className="md:hidden"
-            style={{ height: 36, width: 'auto', maxWidth: 170, objectFit: 'contain', display: 'block' }}
-          />
-          {/* Desktop logo */}
-          <img
-            src="/manolinq-logo-transparent.svg"
-            alt="Manolinq"
-            draggable={false}
-            className="hidden md:block w-auto object-contain"
+            className="w-auto object-contain block"
             style={{ height: 'clamp(30px, 5vw, 40px)', display: 'block' }}
+            draggable={false}
           />
         </a>
 
