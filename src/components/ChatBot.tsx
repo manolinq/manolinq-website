@@ -374,8 +374,7 @@ export default function ChatBot() {
       className="fixed z-50"
       style={{
         right: 'max(16px, env(safe-area-inset-right, 16px))',
-        /* safe-area-inset-bottom ensures we clear home bar on iOS */
-        bottom: 'calc(20px + env(safe-area-inset-bottom, 0px))',
+        bottom: 'calc(24px + env(safe-area-inset-bottom, 0px))',
       }}
     >
       {/* ── Chat window — always rendered, animated open/close ── */}

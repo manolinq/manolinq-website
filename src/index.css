@@ -174,3 +174,13 @@ section[id] {
     radial-gradient(ellipse 100% 50% at 50% 100%, rgba(12,147,232,0.04) 0%, transparent 70%),
     #05050b;
 }
+
+/* ── Mobile hero mockup — scale down on small screens ── */
+@media (max-width: 767px) {
+  .hero-mockup-inner {
+    transform: scale(0.72);
+    transform-origin: top center;
+    /* Pull up the empty space created by scale shrink */
+    margin-bottom: calc((0.72 - 1) * 100%);
+  }
+}
