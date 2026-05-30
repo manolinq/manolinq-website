@@ -12,7 +12,7 @@ const serviceOptions = [
 
 const contactLinks = [
   { href: 'mailto:hello@manolinq.com',              icon: Mail,          label: 'hello@manolinq.com',   external: false },
-  { href: 'https://wa.me/32400000000',               icon: MessageCircle, label: 'WhatsApp us directly', external: true  },
+  { href: 'https://wa.me/32456326720?text=Hey%2C%20I%27m%20interested%20in%20a%20website%20or%20AI%20system.%20Can%20you%20take%20a%20quick%20look%20at%20my%20business%3F', icon: MessageCircle, label: 'WhatsApp us directly', external: true  },
   { href: 'https://instagram.com/manolinq',          icon: Instagram,     label: '@manolinq',            external: true  },
 ];
 

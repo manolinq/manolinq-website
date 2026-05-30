@@ -77,7 +77,7 @@ export default function CTA() {
             <ArrowRight size={16} strokeWidth={2.5} />
           </a>
           <a
-            href="https://wa.me/your-number"
+            href="https://wa.me/32456326720?text=Hey%2C%20I%27m%20interested%20in%20a%20website%20or%20AI%20system.%20Can%20you%20take%20a%20quick%20look%20at%20my%20business%3F"
             className="btn-secondary text-[0.95rem] px-10 py-4 justify-center"
             target="_blank"
             rel="noopener noreferrer"
