@@ -58,11 +58,20 @@ export default function Navbar() {
           className="flex items-center flex-shrink-0 focus-visible:outline-none"
           style={{ lineHeight: 0 }}
         >
+          {/* Mobile: icon mark only */}
+          <img
+            src="/manolinq-icon.svg"
+            alt="Manolinq"
+            className="md:hidden w-auto object-contain block"
+            style={{ height: 34 }}
+            draggable={false}
+          />
+          {/* Desktop: full wordmark */}
           <img
             src="/manolinq-logo-transparent.svg"
             alt="Manolinq"
-            className="w-auto object-contain block"
-            style={{ height: 'clamp(30px, 5vw, 40px)', display: 'block' }}
+            className="hidden md:block w-auto object-contain"
+            style={{ height: 'clamp(30px, 5vw, 40px)' }}
             draggable={false}
           />
         </a>
