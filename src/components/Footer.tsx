@@ -106,21 +106,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* WhatsApp FAB */}
-      <a
-        href="https://wa.me/32456326720?text=Hey%2C%20I%27m%20interested%20in%20a%20website%20or%20AI%20system.%20Can%20you%20take%20a%20quick%20look%20at%20my%20business%3F"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-40 flex items-center justify-center rounded-full
-                   bg-[#22c55e] hover:bg-[#16a34a]
-                   shadow-[0_4px_24px_rgba(34,197,94,0.28)]
-                   hover:shadow-[0_6px_32px_rgba(34,197,94,0.38)]
-                   transition-all duration-200 hover:-translate-y-[2px] hover:scale-105"
-        style={{ width: 52, height: 52 }}
-        aria-label="Chat on WhatsApp"
-      >
-        <MessageCircle size={23} strokeWidth={2} className="text-white fill-white" />
-      </a>
     </footer>
   );
 }
