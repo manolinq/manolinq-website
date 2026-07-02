@@ -261,20 +261,29 @@ export function OtherServices({ currentPath }: { currentPath: string }) {
             <Link
               key={s.href}
               to={s.href}
-              className={`group flex items-center justify-between rounded-2xl p-5 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+              className={`group flex items-center justify-between rounded-2xl p-5 cursor-pointer
+                          transition-all duration-300 hover:-translate-y-1
+                          ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
               style={{
                 background: 'linear-gradient(160deg, #0c0c1a 0%, #090910 100%)',
                 border: '1px solid rgba(255,255,255,0.06)',
+                boxShadow: '0 0 0 rgba(12,147,232,0)',
                 transitionDelay: `${i * 120}ms`,
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(12,147,232,0.22)'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(12,147,232,0.35)';
+                e.currentTarget.style.boxShadow = '0 0 24px rgba(12,147,232,0.12), 0 0 0 1px rgba(12,147,232,0.08)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)';
+                e.currentTarget.style.boxShadow = '0 0 0 rgba(12,147,232,0)';
+              }}
             >
               <div>
-                <h3 className="text-white font-semibold mb-0.5" style={{ fontSize: '0.98rem' }}>{s.label}</h3>
+                <h3 className="text-white font-semibold mb-0.5 group-hover:text-electric-300 transition-colors duration-200" style={{ fontSize: '0.98rem' }}>{s.label}</h3>
                 <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.82rem' }}>{s.desc}</p>
               </div>
-              <ArrowRight size={16} strokeWidth={2.25} className="text-white/30 group-hover:text-electric-400 group-hover:translate-x-1 transition-all duration-200" />
+              <ArrowRight size={16} strokeWidth={2.25} className="text-white/30 group-hover:text-electric-400 group-hover:translate-x-1.5 transition-all duration-200" />
             </Link>
           ))}
         </div>
