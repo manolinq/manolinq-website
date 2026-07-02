@@ -119,7 +119,7 @@ export default function ServicesPage() {
       </section>
 
       {/* How to choose */}
-      <section ref={chooseRef} className="relative py-20 lg:py-24 overflow-hidden">
+      <section ref={chooseRef} className="relative py-14 lg:py-18 overflow-hidden">
         <div className="section-divider absolute top-0" />
 
         {/* ambient */}
@@ -130,7 +130,7 @@ export default function ServicesPage() {
 
         <div className="max-w-5xl mx-auto px-5 sm:px-7 lg:px-8">
           {/* Header */}
-          <div className={`text-center mb-12 transition-all duration-700 ${chooseInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`text-center mb-9 transition-all duration-700 ${chooseInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="section-tag justify-center">
               <span style={{ display: 'inline-block', width: 4, height: 14, borderRadius: 9999, background: '#0c93e8', flexShrink: 0 }} />
               How To Choose
@@ -153,7 +153,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Final CTA */}
-      <section ref={ctaRef} className="relative py-20 lg:py-28 overflow-hidden section-alt">
+      <section ref={ctaRef} className="relative py-14 lg:py-20 overflow-hidden section-alt">
         <div className="section-divider absolute top-0" />
 
         <div
@@ -175,7 +175,7 @@ export default function ServicesPage() {
             <span className="electric-gradient-text">fits your business?</span>
           </h2>
 
-          <p className="mx-auto mb-9" style={{ color: 'rgba(255,255,255,0.45)', fontSize: '1.02rem', lineHeight: 1.8, maxWidth: '34rem' }}>
+          <p className="mx-auto mb-7" style={{ color: 'rgba(255,255,255,0.45)', fontSize: '1.02rem', lineHeight: 1.8, maxWidth: '34rem' }}>
             Send your website, Instagram page or business idea and we'll recommend the best setup — free of charge.
           </p>
 
