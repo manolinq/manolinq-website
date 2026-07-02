@@ -5,6 +5,7 @@ interface PageHeaderProps {
   tag: string;
   title: ReactNode;
   description: string;
+  children?: ReactNode;
 }
 
 /**
@@ -12,7 +13,7 @@ interface PageHeaderProps {
  * layout with the electric-blue design system: eyebrow tag, large gradient
  * headline, supporting copy, ambient glow, scroll-in animation.
  */
-export default function PageHeader({ tag, title, description }: PageHeaderProps) {
+export default function PageHeader({ tag, title, description, children }: PageHeaderProps) {
   const { ref, inView } = useInView();
 
   return (
@@ -47,6 +48,8 @@ export default function PageHeader({ tag, title, description }: PageHeaderProps)
         >
           {description}
         </p>
+
+        {children}
       </div>
     </section>
   );
