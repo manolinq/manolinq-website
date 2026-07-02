@@ -96,6 +96,11 @@
            transition-all duration-200 text-[0.88rem];
   }
 
+  input::placeholder,
+  textarea::placeholder {
+    color: rgba(255, 255, 255, 0.32);
+  }
+
   /* ── Section separator ── */
   .section-divider {
     @apply absolute left-0 right-0 h-px

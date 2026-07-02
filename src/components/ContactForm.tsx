@@ -88,7 +88,7 @@ function SelectField({
           ...inputStyle,
           appearance: 'none',
           cursor: 'pointer',
-          color: value ? '#e2e2e8' : 'rgba(255,255,255,0.28)',
+          color: value ? '#e2e2e8' : 'rgba(255,255,255,0.36)',
           borderColor: focused ? 'rgba(12,147,232,0.6)' : 'rgba(255,255,255,0.14)',
           boxShadow: focused ? '0 0 0 3px rgba(12,147,232,0.12)' : 'none',
           background: focused ? '#0f0f22' : '#0d0d1c',
