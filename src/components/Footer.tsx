@@ -20,7 +20,10 @@ const contactLinks = [
 ];
 
 export default function Footer() {
-  const toTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  const toTop = (e: React.MouseEvent) => {
+    e.preventDefault();
+    document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <footer className="relative border-t border-white/[0.045] bg-[#04040a]">
@@ -105,7 +108,7 @@ export default function Footer() {
           <button
             type="button"
             onClick={toTop}
-            className="text-white/16 hover:text-electric-400/40 text-[0.78rem]
+            className="text-white/30 hover:text-electric-400/70 text-[0.78rem]
                        cursor-pointer transition-colors duration-200"
           >
             Back to top ↑
