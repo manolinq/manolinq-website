@@ -103,9 +103,10 @@ export default function Footer() {
             © {new Date().getFullYear()} Manolinq. All rights reserved.
           </p>
           <button
+            type="button"
             onClick={toTop}
             className="text-white/16 hover:text-electric-400/40 text-[0.78rem]
-                       transition-colors duration-200"
+                       cursor-pointer transition-colors duration-200"
           >
             Back to top ↑
           </button>
