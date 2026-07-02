@@ -1,43 +1,40 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { label: 'Services', href: '#services' },
-  { label: 'Packages', href: '#packages' },
-  { label: 'Process',  href: '#process'  },
-  { label: 'Contact',  href: '#contact'  },
+  { label: 'Services', to: '/services' },
+  { label: 'Packages', to: '/pricing'  },
+  { label: 'Process',  to: '/process'  },
+  { label: 'Contact',  to: '/contact'  },
 ];
 
 export default function Navbar() {
-  const [scrolled,      setScrolled]      = useState(false);
-  const [menuOpen,      setMenuOpen]      = useState(false);
-  const [activeSection, setActiveSection] = useState('');
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 50);
-      const sections = navLinks.map((l) => l.href.slice(1));
-      let current = '';
-      for (const id of sections) {
-        const el = document.getElementById(id);
-        if (el && window.scrollY >= el.offsetTop - 130) current = id;
-      }
-      setActiveSection(current);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const handleNavClick = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-      e.preventDefault();
-      setMenuOpen(false);
-      const id = href.slice(1);
-      if (!id) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    },
-    []
-  );
+  // Close mobile menu on route change
+  useEffect(() => { setMenuOpen(false); }, [location.pathname]);
+
+  const isActive = (to: string) =>
+    to === '/' ? location.pathname === '/' : location.pathname.startsWith(to);
+
+  const goHomeTop = () => {
+    setMenuOpen(false);
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate('/');
+    }
+  };
 
   return (
     <header
@@ -52,11 +49,11 @@ export default function Navbar() {
         style={{ height: 64 }}
       >
         {/* Logo */}
-        <a
-          href="#"
-          onClick={(e) => handleNavClick(e, '#')}
+        <button
+          onClick={goHomeTop}
           className="flex items-center flex-shrink-0 focus-visible:outline-none"
           style={{ lineHeight: 0 }}
+          aria-label="Manolinq home"
         >
           {/* Mobile: icon mark only */}
           <img
@@ -74,29 +71,28 @@ export default function Navbar() {
             style={{ height: 'clamp(30px, 5vw, 40px)' }}
             draggable={false}
           />
-        </a>
+        </button>
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-0.5">
           {navLinks.map((link) => {
-            const isActive = activeSection === link.href.slice(1);
+            const active = isActive(link.to);
             return (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
+              <li key={link.to}>
+                <Link
+                  to={link.to}
                   className={`relative text-[0.84rem] font-medium px-4 py-2 rounded-lg
                                transition-all duration-200
-                              ${isActive
+                              ${active
                                 ? 'text-white'
                                 : 'text-white/45 hover:text-white/90'
                               }`}
                 >
-                  {isActive && (
+                  {active && (
                     <span className="absolute inset-0 rounded-lg bg-white/[0.055]" />
                   )}
                   <span className="relative">{link.label}</span>
-                </a>
+                </Link>
               </li>
             );
           })}
@@ -104,13 +100,9 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex">
-          <a
-            href="#contact"
-            onClick={(e) => handleNavClick(e, '#contact')}
-            className="btn-primary text-[0.84rem] py-2.5 px-5"
-          >
+          <Link to="/contact" className="btn-primary text-[0.84rem] py-2.5 px-5">
             Get Free Audit
-          </a>
+          </Link>
         </div>
 
         {/* Mobile toggle */}
@@ -130,39 +122,38 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div
         className={`md:hidden transition-all duration-300 overflow-hidden ${
-          menuOpen ? 'max-h-[420px] opacity-100' : 'max-h-0 opacity-0'
+          menuOpen ? 'max-h-[520px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
         <div className="bg-[#06060c]/98 backdrop-blur-2xl border-b border-white/[0.055]
                         px-5 pb-6 pt-2 flex flex-col gap-1">
           {navLinks.map((link) => {
-            const isActive = activeSection === link.href.slice(1);
+            const active = isActive(link.to);
             return (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
+              <Link
+                key={link.to}
+                to={link.to}
                 className={`py-3 px-3 text-[0.88rem] font-medium rounded-xl
                              transition-all flex items-center justify-between
-                            ${isActive
+                            ${active
                               ? 'text-white bg-white/[0.06]'
                               : 'text-white/50 hover:text-white hover:bg-white/[0.04]'
                             }`}
               >
                 {link.label}
-                {isActive && (
+                {active && (
                   <span className="w-1.5 h-1.5 rounded-full bg-electric-400 flex-shrink-0" />
                 )}
-              </a>
+              </Link>
             );
           })}
-          <a
-            href="#contact"
-            onClick={(e) => handleNavClick(e, '#contact')}
-            className="btn-primary mt-3 justify-center"
-          >
+          <Link to="/about" className={`py-3 px-3 text-[0.88rem] font-medium rounded-xl transition-all flex items-center justify-between ${isActive('/about') ? 'text-white bg-white/[0.06]' : 'text-white/50 hover:text-white hover:bg-white/[0.04]'}`}>
+            About
+            {isActive('/about') && <span className="w-1.5 h-1.5 rounded-full bg-electric-400 flex-shrink-0" />}
+          </Link>
+          <Link to="/contact" className="btn-primary mt-3 justify-center">
             Get Free Audit
-          </a>
+          </Link>
         </div>
       </div>
     </header>

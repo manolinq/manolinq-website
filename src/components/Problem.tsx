@@ -1,4 +1,5 @@
 import { AlertTriangle, TrendingDown, Users, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useInView } from '../hooks/useInView';
 
 const painPoints = [
@@ -163,12 +164,8 @@ export default function Problem() {
             >
               If this sounds familiar, your website is probably costing you leads.
             </p>
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-              }}
+            <Link
+              to="/contact"
               className="inline-flex items-center gap-2.5 font-semibold text-white text-[0.88rem]
                          tracking-[-0.01em] px-7 py-[13px] rounded-xl
                          transition-all duration-200"
@@ -195,7 +192,7 @@ export default function Problem() {
             >
               Get a Free Website Audit
               <ArrowRight size={14} strokeWidth={2.5} />
-            </a>
+            </Link>
           </div>
         </div>
 

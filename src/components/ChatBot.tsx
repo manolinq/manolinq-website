@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { X, Send, Bot, ChevronDown, MessageCircle } from 'lucide-react';
 
 const WA_LINK =
@@ -259,8 +260,8 @@ function ChatWindow({
           <div className="flex flex-col gap-2 pt-2">
             <div className="h-px" style={{ background: 'rgba(255,255,255,0.05)' }} />
             <div className="flex flex-wrap gap-2">
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 onClick={onClose}
                 className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5
                            text-[0.75rem] font-semibold text-white transition-all duration-150"
@@ -270,7 +271,7 @@ function ChatWindow({
                 }}
               >
                 Request Free Audit
-              </a>
+              </Link>
               <a
                 href={WA_LINK}
                 target="_blank"
@@ -285,8 +286,8 @@ function ChatWindow({
               >
                 Message on WhatsApp
               </a>
-              <a
-                href="#packages"
+              <Link
+                to="/pricing"
                 onClick={onClose}
                 className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5
                            text-[0.75rem] font-medium transition-all duration-150"
@@ -298,7 +299,7 @@ function ChatWindow({
               >
                 View Packages
                 <ChevronDown size={11} strokeWidth={2} style={{ transform: 'rotate(-90deg)' }} />
-              </a>
+              </Link>
             </div>
           </div>
         )}

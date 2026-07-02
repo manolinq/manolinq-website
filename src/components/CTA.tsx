@@ -1,4 +1,5 @@
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useInView } from '../hooks/useInView';
 
 export default function CTA() {
@@ -72,10 +73,10 @@ export default function CTA() {
             inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
-          <a href="#contact" className="btn-primary text-[0.95rem] px-10 py-4 justify-center">
+          <Link to="/contact" className="btn-primary text-[0.95rem] px-10 py-4 justify-center">
             Request Free Audit
             <ArrowRight size={16} strokeWidth={2.5} />
-          </a>
+          </Link>
           <a
             href="https://wa.me/32456326720?text=Hey%2C%20I%27m%20interested%20in%20a%20website%20or%20AI%20system.%20Can%20you%20take%20a%20quick%20look%20at%20my%20business%3F"
             className="btn-secondary text-[0.95rem] px-10 py-4 justify-center"

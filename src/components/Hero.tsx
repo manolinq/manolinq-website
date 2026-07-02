@@ -1,4 +1,5 @@
 import { ArrowRight, ChevronDown, Globe, MessageSquare, BarChart2, Check, Zap, TrendingUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useInView } from '../hooks/useInView';
 
 const trustPoints = [
@@ -126,8 +127,8 @@ export default function Hero() {
 
             {/* CTA buttons */}
             <div className={`flex flex-col sm:flex-row gap-3 mb-10 ${vis(300)}`}>
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="inline-flex items-center justify-center gap-2.5
                            font-semibold text-white text-[0.88rem] tracking-[-0.01em]
                            px-7 py-[14px] rounded-xl w-full sm:w-auto
@@ -161,9 +162,9 @@ export default function Hero() {
               >
                 Get a Free Website Audit
                 <ArrowRight size={15} strokeWidth={2.5} />
-              </a>
-              <a
-                href="#services"
+              </Link>
+              <Link
+                to="/services"
                 className="inline-flex items-center justify-center gap-2.5
                            font-semibold text-[0.88rem] tracking-[-0.01em]
                            px-7 py-[14px] rounded-xl w-full sm:w-auto
@@ -192,7 +193,7 @@ export default function Hero() {
                 }}
               >
                 View Services
-              </a>
+              </Link>
             </div>
 
             {/* Trust points */}

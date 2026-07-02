@@ -1,4 +1,5 @@
 import { Search, FileText, Hammer, Rocket, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useInView } from '../hooks/useInView';
 
 const steps = [
@@ -30,11 +31,6 @@ const steps = [
 
 export default function Process() {
   const { ref, inView } = useInView();
-
-  const goToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <section id="process" ref={ref} className="relative py-28 lg:py-36 overflow-hidden">
@@ -131,9 +127,8 @@ export default function Process() {
             >
               Ready to see what your website needs?
             </p>
-            <a
-              href="#contact"
-              onClick={goToContact}
+            <Link
+              to="/contact"
               className="inline-flex items-center gap-2.5 font-semibold text-white text-[0.88rem]
                          tracking-[-0.01em] px-7 py-[13px] rounded-xl transition-all duration-200"
               style={{
@@ -162,7 +157,7 @@ export default function Process() {
             >
               Get a Free Website Audit
               <ArrowRight size={14} strokeWidth={2.5} />
-            </a>
+            </Link>
           </div>
         </div>
 

@@ -1,4 +1,5 @@
 import { Check, ArrowRight, Zap } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useInView } from '../hooks/useInView';
 
 const packages = [
@@ -56,11 +57,6 @@ const packages = [
 
 export default function Packages() {
   const { ref, inView } = useInView();
-
-  const goToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <section id="packages" ref={ref} className="relative py-32 lg:py-40 section-dark overflow-hidden">
@@ -169,9 +165,8 @@ export default function Packages() {
                   ))}
                 </ul>
 
-                <a
-                  href="#contact"
-                  onClick={goToContact}
+                <Link
+                  to="/contact"
                   className={`flex items-center justify-center gap-2.5 font-semibold
                                py-3.5 px-6 rounded-xl transition-all duration-200 group
                                text-[0.88rem] tracking-[-0.01em]
@@ -186,7 +181,7 @@ export default function Packages() {
                     strokeWidth={2.5}
                     className="group-hover:translate-x-0.5 transition-transform duration-200"
                   />
-                </a>
+                </Link>
               </div>
             </div>
           ))}

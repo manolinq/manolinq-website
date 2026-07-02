@@ -1,19 +1,27 @@
+import { Link } from 'react-router-dom';
 import { Mail, Instagram, MessageCircle, ArrowUpRight } from 'lucide-react';
 
-const footerLinks = [
-  { label: 'Services', href: '#services' },
-  { label: 'Packages', href: '#packages' },
-  { label: 'Process',  href: '#process'  },
-  { label: 'Contact',  href: '#contact'  },
+const navLinks = [
+  { label: 'Home',          to: '/'                      },
+  { label: 'Services',      to: '/services'              },
+  { label: 'Websites',      to: '/services/websites'     },
+  { label: 'Landing Pages', to: '/services/landing-pages'},
+  { label: 'AI Systems',    to: '/services/ai-systems'   },
+  { label: 'Pricing',       to: '/pricing'               },
+  { label: 'Process',       to: '/process'               },
+  { label: 'About',         to: '/about'                 },
+  { label: 'Contact',       to: '/contact'               },
 ];
 
 const contactLinks = [
   { href: 'mailto:support.manolinq@gmail.com', icon: Mail,        label: 'support.manolinq@gmail.com' },
   { href: 'https://www.instagram.com/manolinq?igsh=MTk5aW5uNjV0NXh0dQ==', icon: Instagram, label: '@manolinq', external: true },
-  { href: 'https://wa.me/32456326720?text=Hey%2C%20I%27m%20interested%20in%20a%20website%20or%20AI%20system.%20Can%20you%20take%20a%20quick%20look%20at%20my%20business%3F', icon: MessageCircle, label: 'WhatsApp',          external: true },
+  { href: 'https://wa.me/32456326720?text=Hey%2C%20I%27m%20interested%20in%20a%20website%20or%20AI%20system.%20Can%20you%20take%20a%20quick%20look%20at%20my%20business%3F', icon: MessageCircle, label: 'WhatsApp', external: true },
 ];
 
 export default function Footer() {
+  const toTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
   return (
     <footer className="relative border-t border-white/[0.045] bg-[#04040a]">
 
@@ -21,7 +29,7 @@ export default function Footer() {
       <div className="absolute top-0 left-0 right-0 h-[1px]
                       bg-gradient-to-r from-transparent via-electric-500/[0.18] to-transparent" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10 sm:pb-10"
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10"
            style={{ paddingBottom: 'calc(2.5rem + env(safe-area-inset-bottom, 0px))' }}>
         <div className="grid sm:grid-cols-3 gap-10 mb-14">
 
@@ -45,16 +53,16 @@ export default function Footer() {
             <p className="text-white/35 text-[0.67rem] font-semibold uppercase tracking-[0.2em] mb-5">
               Navigation
             </p>
-            <ul className="space-y-3">
-              {footerLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-3">
+              {navLinks.map((link) => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
                     className="text-white/28 hover:text-white/70 text-[0.84rem]
                                transition-colors duration-200"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -97,13 +105,13 @@ export default function Footer() {
           <p className="text-white/16 text-[0.78rem]">
             © {new Date().getFullYear()} Manolinq. All rights reserved.
           </p>
-          <a
-            href="#"
+          <button
+            onClick={toTop}
             className="text-white/16 hover:text-electric-400/40 text-[0.78rem]
                        transition-colors duration-200"
           >
             Back to top ↑
-          </a>
+          </button>
         </div>
       </div>
 

@@ -1,4 +1,5 @@
 import { Globe, LayoutTemplate, Bot, ArrowRight, Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useInView } from '../hooks/useInView';
 
 const services = [
@@ -17,6 +18,7 @@ const services = [
     ],
     featured: true,
     badge: 'Best For Most Businesses',
+    href: '/services/websites',
   },
   {
     icon: LayoutTemplate,
@@ -33,6 +35,7 @@ const services = [
     ],
     featured: false,
     badge: null,
+    href: '/services/landing-pages',
   },
   {
     icon: Bot,
@@ -49,16 +52,12 @@ const services = [
     ],
     featured: false,
     badge: null,
+    href: '/services/ai-systems',
   },
 ];
 
 export default function Services() {
   const { ref, inView } = useInView();
-
-  const goToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <section id="services" ref={ref} className="relative py-28 lg:py-36 section-alt overflow-hidden">
@@ -98,9 +97,28 @@ export default function Services() {
               service={service}
               index={i}
               inView={inView}
-              goToContact={goToContact}
             />
           ))}
+        </div>
+
+        {/* View all services */}
+        <div
+          className={`mt-12 flex justify-center transition-all duration-700 delay-500 ${
+            inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}
+        >
+          <Link
+            to="/services"
+            className="inline-flex items-center gap-2 text-[0.86rem] font-semibold text-white/55
+                       hover:text-electric-400 transition-colors duration-200 group"
+          >
+            View all services
+            <ArrowRight
+              size={13}
+              strokeWidth={2.5}
+              className="group-hover:translate-x-1 transition-transform duration-200"
+            />
+          </Link>
         </div>
 
       </div>
@@ -114,12 +132,10 @@ function ServiceCard({
   service,
   index,
   inView,
-  goToContact,
 }: {
   service: Service;
   index: number;
   inView: boolean;
-  goToContact: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }) {
   const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
     if (service.featured) return;
@@ -264,9 +280,8 @@ function ServiceCard({
         </ul>
 
         {/* CTA */}
-        <a
-          href="#contact"
-          onClick={goToContact}
+        <Link
+          to={service.href}
           className="inline-flex items-center gap-2 text-[0.84rem] font-semibold
                      transition-all duration-200 group mt-auto"
           style={{
@@ -285,13 +300,13 @@ function ServiceCard({
               : 'rgba(255,255,255,0.55)';
           }}
         >
-          Request this service
+          Explore this service
           <ArrowRight
             size={13}
             strokeWidth={2.5}
             className="group-hover:translate-x-1 transition-transform duration-200"
           />
-        </a>
+        </Link>
 
       </div>
     </div>
