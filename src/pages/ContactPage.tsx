@@ -6,7 +6,7 @@ export default function ContactPage() {
   useSeo({
     title: 'Contact | Get a Free Website Audit — Manolinq',
     description:
-      'Get in touch with Manolinq for a free website audit. Share your website, social page or business idea and we will reply within 24 hours with clear next steps.',
+      'Get in touch with Manolinq for a free website audit. Email us, WhatsApp us or fill in the form and we will reply within 24 hours with clear next steps.',
     path: '/contact',
   });
 
@@ -38,12 +38,12 @@ export default function ContactPage() {
             className="mx-auto"
             style={{ color: 'rgba(255,255,255,0.45)', fontSize: '1.05rem', lineHeight: 1.8, maxWidth: '38rem' }}
           >
-            Fill in the form and we'll review your business, website or social page within 24 hours with a clear next-step recommendation.
+            Fill in the form, email us or message us on WhatsApp — we reply within 24 hours with a clear next-step recommendation.
           </p>
         </div>
       </section>
 
-      {/* Form */}
+      {/* Form + contact options */}
       <section className="relative py-12 lg:py-16 pb-28 lg:pb-36 overflow-hidden">
         <div className="section-divider absolute top-0" />
         <div

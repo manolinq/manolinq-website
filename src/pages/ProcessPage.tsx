@@ -192,7 +192,7 @@ export default function ProcessPage() {
       <CTABand
         title="Ready to start"
         highlight="with a free audit?"
-        description="Share your website, social page or business idea and we'll show you what can be improved — free of charge."
+        description="Share your website, social page or business and we'll review it free of charge — then show you exactly how we can help."
       />
     </>
   );

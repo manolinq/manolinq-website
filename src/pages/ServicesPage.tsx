@@ -11,24 +11,25 @@ const services = [
     title: 'Business Websites',
     tag: 'Full Sites',
     description:
-      'Premium, mobile-friendly websites that make your business look professional, explain your services clearly and turn visitors into leads.',
+      'A modern, mobile-friendly website built around your business — designed to build trust, explain your services clearly and turn visitors into enquiries.',
     features: [
-      'Custom design & branding',
+      'Custom design tailored to your brand',
       'Mobile-first responsive layout',
       'Service pages built to convert',
       'Contact form + WhatsApp integration',
-      'Basic SEO foundations',
+      'SEO foundations & analytics setup',
     ],
     featured: true,
     badge: 'Best For Most Businesses',
     href: '/services/websites',
+    cta: 'See Website Packages',
   },
   {
     icon: LayoutTemplate,
     title: 'Landing Pages',
     tag: 'High-Converting',
     description:
-      'Focused one-page websites built for one offer, campaign or service. Perfect for ads, promotions, launches or lead generation.',
+      'Focused pages built for one goal: conversion. Ideal for campaigns, ads, promotions, services or product launches — no distractions, just results.',
     features: [
       'Clear offer structure',
       'Strong headline and CTA flow',
@@ -39,13 +40,14 @@ const services = [
     featured: false,
     badge: null,
     href: '/services/landing-pages',
+    cta: 'Explore Landing Pages',
   },
   {
     icon: Bot,
     title: 'AI Assistants & Automations',
     tag: 'Next-Level',
     description:
-      'AI chat assistants and automated workflows that help answer questions, qualify leads and notify you when someone is interested.',
+      'AI systems that capture, qualify and follow up with leads — while you focus on running your business. From chatbots to WhatsApp automations.',
     features: [
       'AI chatbot setup',
       'Lead qualification flows',
@@ -56,6 +58,7 @@ const services = [
     featured: false,
     badge: null,
     href: '/services/ai-systems',
+    cta: 'Explore AI Systems',
   },
 ];
 
@@ -73,8 +76,8 @@ export default function ServicesPage() {
     <>
       <PageHeader
         tag="What We Build"
-        title={<>Services designed to <span className="electric-gradient-text">grow your business</span></>}
-        description="Everything you need to attract more clients and close more deals online — from full business websites to AI-powered automations."
+        title={<>Services built to <span className="electric-gradient-text">grow your business</span></>}
+        description="From websites to AI systems, Manolinq helps businesses create a stronger online presence and capture more leads."
       />
 
       {/* Service cards */}
@@ -205,7 +208,7 @@ function ServiceCard({
           onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = service.featured ? 'rgba(147,212,253,1)' : 'rgba(54,175,247,0.9)'; }}
           onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = service.featured ? 'rgba(54,175,247,0.9)' : 'rgba(255,255,255,0.55)'; }}
         >
-          Explore this service
+          {service.cta ?? 'Explore this service'}
           <ArrowRight size={13} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform duration-200" />
         </Link>
       </div>

@@ -1,21 +1,21 @@
-import { Target, Eye, Users, Zap, ShieldCheck } from 'lucide-react';
+import { MapPin, Target, Eye, Zap, ShieldCheck, Users } from 'lucide-react';
 import { useSeo } from '../hooks/useSeo';
 import { useInView } from '../hooks/useInView';
 import PageHeader from '../components/PageHeader';
 import CTABand from '../components/CTABand';
 
 const values = [
-  { icon: Target,     title: 'Outcome-driven',    description: 'Every project is measured by one thing: does it bring you more leads, bookings and clients.' },
-  { icon: Zap,        title: 'Fast & focused',     description: 'We move quickly, communicate clearly and keep the process simple and stress-free.' },
-  { icon: ShieldCheck,title: 'Transparent',       description: 'Clear scope, clear price, no jargon. You always know what is happening and why.' },
-  { icon: Users,      title: 'Built around you',   description: 'No templates. Every site and system is designed around your business and your clients.' },
+  { icon: Target,      title: 'Outcome-driven',   description: 'Every project is measured by one thing: does it bring your business more leads, bookings and clients.' },
+  { icon: Zap,         title: 'Fast & focused',    description: 'We move quickly, communicate clearly and keep the process simple — from first call to launch.' },
+  { icon: ShieldCheck, title: 'Transparent',       description: 'Clear scope, clear price, no jargon. You always know what is happening, what it costs and why.' },
+  { icon: Users,       title: 'Built around you',  description: 'No templates. Every site and system is designed around your business, your clients and your goals.' },
 ];
 
 const stats = [
-  { value: '24h',   label: 'Average reply time' },
-  { value: '1–2',   label: 'Weeks to launch' },
-  { value: '100%',  label: 'Custom built' },
-  { value: '0',     label: 'Hidden fees' },
+  { value: '24h',  label: 'Average reply time' },
+  { value: '1–2',  label: 'Weeks to launch' },
+  { value: '100%', label: 'Custom built' },
+  { value: '0',    label: 'Hidden fees' },
 ];
 
 const approach = [
@@ -39,9 +39,9 @@ const approach = [
 
 export default function AboutPage() {
   useSeo({
-    title: 'About | Who We Are & How We Work — Manolinq',
+    title: 'About Manolinq | Belgium-Based Web & AI Agency',
     description:
-      'Manolinq builds premium websites, landing pages and AI systems for businesses that want more leads, bookings and clients. Learn about our mission, values and approach.',
+      'Manolinq helps businesses build modern websites, landing pages and AI systems that generate more leads. Belgium-based, working with businesses online.',
     path: '/about',
   });
 
@@ -53,8 +53,8 @@ export default function AboutPage() {
     <>
       <PageHeader
         tag="About Manolinq"
-        title={<>We build digital systems that <span className="electric-gradient-text">grow businesses</span></>}
-        description="Manolinq helps businesses attract more clients and close more deals online — through premium websites, high-converting landing pages and AI-powered automations."
+        title={<>We build digital systems that <span className="electric-gradient-text">generate more leads</span></>}
+        description="Manolinq helps businesses build modern websites, landing pages and AI systems that create a stronger online presence and capture more clients. Belgium-based, working with businesses online."
       />
 
       {/* Mission + vision */}
@@ -91,14 +91,22 @@ export default function AboutPage() {
               </div>
               <div className="section-tag" style={{ marginBottom: '0.75rem' }}>
                 <span style={{ display: 'inline-block', width: 4, height: 14, borderRadius: 9999, background: '#0c93e8', flexShrink: 0 }} />
-                Vision
+                What We Do
               </div>
               <h3 className="text-white font-bold mb-3" style={{ fontSize: '1.4rem', letterSpacing: '-0.025em' }}>
-                Premium digital presence for every business
+                Websites, landing pages and AI systems
               </h3>
               <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.92rem', lineHeight: 1.85 }}>
-                We believe every business deserves a website and systems that look premium and work hard for them — without the enterprise price tag or the technical complexity.
+                Manolinq is based in Belgium and works with businesses online. We build professional digital presences that look premium, explain services clearly and turn visitors into enquiries.
               </p>
+            </div>
+          </div>
+
+          {/* Belgium badge */}
+          <div className={`mt-5 flex items-center gap-3 justify-center transition-all duration-700 delay-200 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <div className="inline-flex items-center gap-2.5 rounded-full px-4 py-2" style={{ background: 'rgba(11,11,21,0.6)', border: '1px solid rgba(255,255,255,0.07)' }}>
+              <MapPin size={13} strokeWidth={2} style={{ color: 'rgba(54,175,247,0.7)' }} />
+              <span style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.82rem', fontWeight: 500 }}>Belgium-based — working with businesses online</span>
             </div>
           </div>
         </div>
@@ -190,10 +198,10 @@ export default function AboutPage() {
       </section>
 
       <CTABand
-        eyebrow="Let's Talk"
-        title="Want to work"
-        highlight="together?"
-        description="Tell us about your business and we'll show you how we can help you grow — starting with a free audit."
+        eyebrow="Let's Work Together"
+        title="Ready to grow"
+        highlight="your business?"
+        description="Tell us about your business and we'll show you how we can help — starting with a free audit."
       />
     </>
   );

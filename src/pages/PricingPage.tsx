@@ -9,7 +9,7 @@ const packages = [
   {
     name: 'Starter Website',
     price: 'From €500',
-    description: 'A clean, professional website for businesses that need a strong basic online presence.',
+    description: 'A clean, professional website for businesses that need a solid online presence without the full works.',
     features: [
       '1–3 pages',
       'Mobile-responsive design',
@@ -24,14 +24,14 @@ const packages = [
   {
     name: 'Business Website',
     price: 'From €750',
-    description: 'A premium website built to explain your services clearly, build trust and turn visitors into leads.',
+    description: 'A premium website built to explain your services clearly, build trust and turn visitors into enquiries.',
     features: [
       'Up to 5 pages',
       'Premium UI/UX design',
       'Service pages built to convert',
       'Lead capture form',
       'WhatsApp integration',
-      'Basic SEO setup',
+      'SEO foundations',
       'Analytics setup',
       '2 revision rounds',
     ],
@@ -42,7 +42,7 @@ const packages = [
   {
     name: 'Website + AI System',
     price: 'From €1,250',
-    description: 'A complete website combined with AI and automation systems that capture, qualify and follow up with leads.',
+    description: 'A complete website combined with AI and automation that captures, qualifies and follows up with leads.',
     features: [
       'Everything in Business Website',
       'AI chatbot/assistant setup',
@@ -59,40 +59,68 @@ const packages = [
 ];
 
 const comparison = [
-  { feature: 'Pages included',            starter: '1–3',         business: 'Up to 5',         ai: 'Up to 5' },
-  { feature: 'Premium UI/UX design',      starter: 'Standard',    business: 'Yes',             ai: 'Yes' },
-  { feature: 'Lead capture form',         starter: 'Yes',         business: 'Yes',             ai: 'Yes' },
-  { feature: 'WhatsApp integration',      starter: 'Buttons',     business: 'Full integration',ai: 'Full + automation' },
-  { feature: 'Service pages built to convert', starter: '—',      business: 'Yes',             ai: 'Yes' },
-  { feature: 'SEO foundations',           starter: 'Basic',       business: 'Basic',           ai: 'Basic' },
-  { feature: 'Analytics setup',           starter: '—',           business: 'Yes',             ai: 'Yes' },
-  { feature: 'AI chatbot / assistant',    starter: '—',           business: '—',               ai: 'Yes' },
-  { feature: 'Lead qualification flow',   starter: '—',           business: '—',               ai: 'Yes' },
-  { feature: 'Automated follow-ups',      starter: '—',           business: '—',               ai: 'Yes' },
-  { feature: 'Instant lead notifications',starter: '—',           business: '—',               ai: 'Yes' },
-  { feature: 'CRM / Notion integration',  starter: '—',           business: '—',               ai: 'Yes' },
-  { feature: 'Revision rounds',           starter: '1',           business: '2',               ai: '3' },
-  { feature: 'Launch support',            starter: '—',           business: '—',               ai: '30 days' },
+  { feature: 'Pages included',                 starter: '1–3',         business: 'Up to 5',          ai: 'Up to 5' },
+  { feature: 'Premium UI/UX design',           starter: 'Standard',    business: 'Yes',              ai: 'Yes' },
+  { feature: 'Lead capture form',              starter: 'Yes',         business: 'Yes',              ai: 'Yes' },
+  { feature: 'WhatsApp integration',           starter: 'Buttons',     business: 'Full integration', ai: 'Full + automation' },
+  { feature: 'Service pages built to convert', starter: '—',           business: 'Yes',              ai: 'Yes' },
+  { feature: 'SEO foundations',                starter: 'Basic',       business: 'Basic',            ai: 'Basic' },
+  { feature: 'Analytics setup',                starter: '—',           business: 'Yes',              ai: 'Yes' },
+  { feature: 'AI chatbot / assistant',         starter: '—',           business: '—',                ai: 'Yes' },
+  { feature: 'Lead qualification flow',        starter: '—',           business: '—',                ai: 'Yes' },
+  { feature: 'Automated follow-ups',           starter: '—',           business: '—',                ai: 'Yes' },
+  { feature: 'Instant lead notifications',     starter: '—',           business: '—',                ai: 'Yes' },
+  { feature: 'CRM / Notion integration',       starter: '—',           business: '—',                ai: 'Yes' },
+  { feature: 'Revision rounds',                starter: '1',           business: '2',                ai: '3' },
+  { feature: 'Launch support',                 starter: '—',           business: '—',                ai: '30 days' },
 ];
 
 const addOns = [
-  { icon: Globe,          title: 'Additional pages',           desc: 'Extra service or info pages beyond your package.' },
-  { icon: Bot,            title: 'AI assistant add-on',        desc: 'Add an AI chatbot to an existing website.' },
-  { icon: MessageCircle,  title: 'Automation workflows',       desc: 'Custom WhatsApp, email or CRM automations.' },
-  { icon: Zap,            title: 'Ongoing support & updates',  desc: 'Monthly maintenance and content updates.' },
+  { icon: Globe,         title: 'Additional pages',          desc: 'Extra service or info pages beyond your package.' },
+  { icon: Bot,           title: 'AI assistant add-on',       desc: 'Add an AI chatbot to an existing website.' },
+  { icon: MessageCircle, title: 'Automation workflows',      desc: 'Custom WhatsApp, email or CRM automations.' },
+  { icon: Zap,           title: 'Ongoing support & updates', desc: 'Monthly maintenance and content updates.' },
+];
+
+const faqs = [
+  {
+    q: 'What is included in the starting price?',
+    a: 'The starting prices cover the core deliverables listed in each package. Final pricing depends on the number of pages, content complexity, integrations and overall project scope — we will give you a clear quote after the free audit.',
+  },
+  {
+    q: 'Are there any hidden fees?',
+    a: 'No. You get a written scope and price before any work begins. Domain registration and hosting costs are separate and clearly communicated upfront — no surprise invoices.',
+  },
+  {
+    q: 'Can I upgrade my package later?',
+    a: 'Yes. You can start with a Starter or Business Website and add AI systems or additional pages later. We will always give you a clear quote for any add-on work.',
+  },
+  {
+    q: 'How long does a project take?',
+    a: 'Most business websites are completed within 1–2 weeks. Landing pages take 3–7 days. AI systems and automations are typically added within 1 week on top of the website build.',
+  },
+  {
+    q: 'What do I need to provide?',
+    a: 'You provide your business details, services, any existing branding (logo, colours) and any photos or content you have. If you do not have copy ready, we can help structure and write it based on a conversation.',
+  },
+  {
+    q: 'Do you offer ongoing support?',
+    a: 'Yes. The Website + AI System package includes 30-day launch support. We also offer ongoing maintenance and update plans — ask us about it when you get in touch.',
+  },
 ];
 
 export default function PricingPage() {
   useSeo({
     title: 'Pricing | Websites & AI Systems — Manolinq',
     description:
-      'Transparent pricing for business websites, landing pages and AI systems. Packages from €500 to €1,250+ with clear deliverables and no hidden fees.',
+      'Transparent pricing for business websites, landing pages and AI systems. Packages from €500 to €1,250+. Final price depends on content, pages and scope.',
     path: '/pricing',
   });
 
   const { ref, inView } = useInView();
   const { ref: ref2, inView: inView2 } = useInView();
   const { ref: ref3, inView: inView3 } = useInView();
+  const { ref: ref4, inView: inView4 } = useInView();
 
   return (
     <>
@@ -113,7 +141,7 @@ export default function PricingPage() {
           </div>
 
           <p className="text-center mt-10" style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.82rem' }}>
-            Prices are starting points. Final pricing depends on scope — request a free audit for a tailored quote.
+            Final price depends on content, number of pages, integrations and project scope — request a free audit for a tailored quote.
           </p>
         </div>
       </section>
@@ -187,6 +215,35 @@ export default function PricingPage() {
                 </div>
                 <h3 className="text-white font-semibold mb-1.5" style={{ fontSize: '0.92rem' }}>{a.title}</h3>
                 <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.82rem', lineHeight: 1.7 }}>{a.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQs */}
+      <section ref={ref4} className="relative py-20 lg:py-24 overflow-hidden">
+        <div className="section-divider absolute top-0" />
+        <div className="max-w-3xl mx-auto px-5 sm:px-7 lg:px-8">
+          <div className={`text-center mb-12 transition-all duration-700 ${inView4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="section-tag justify-center">
+              <span style={{ display: 'inline-block', width: 4, height: 14, borderRadius: 9999, background: '#0c93e8', flexShrink: 0 }} />
+              Questions
+            </div>
+            <h2 className="text-white font-bold tracking-[-0.03em]" style={{ fontSize: 'clamp(1.7rem, 3.5vw, 2.3rem)' }}>
+              Pricing <span className="electric-gradient-text">FAQs</span>
+            </h2>
+          </div>
+
+          <div className="space-y-3">
+            {faqs.map((faq, i) => (
+              <div
+                key={faq.q}
+                className={`rounded-2xl p-6 transition-all duration-700 ${inView4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+                style={{ background: 'rgba(11,11,21,0.6)', border: '1px solid rgba(255,255,255,0.05)', transitionDelay: `${i * 80}ms` }}
+              >
+                <h3 className="text-white font-semibold mb-2" style={{ fontSize: '0.98rem', letterSpacing: '-0.015em' }}>{faq.q}</h3>
+                <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.88rem', lineHeight: 1.8 }}>{faq.a}</p>
               </div>
             ))}
           </div>
