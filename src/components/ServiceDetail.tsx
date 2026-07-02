@@ -1,3 +1,4 @@
+import React from 'react';
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check, ArrowLeft } from 'lucide-react';
@@ -67,7 +68,7 @@ export default function ServiceDetail(props: ServiceDetailProps) {
   );
 }
 
-export function FeaturesSection({ features }: { features: Feature[] }) {
+export function FeaturesSection({ features, headline }: { features: Feature[]; headline?: React.ReactNode }) {
   const { ref, inView } = useInView();
 
   return (
@@ -80,7 +81,7 @@ export function FeaturesSection({ features }: { features: Feature[] }) {
             What's Included
           </div>
           <h2 className="text-white font-bold tracking-[-0.03em]" style={{ fontSize: 'clamp(1.7rem, 3.5vw, 2.3rem)' }}>
-            Everything built to <span className="electric-gradient-text">convert visitors into clients</span>
+            {headline ?? <>Everything built to <span className="electric-gradient-text">convert visitors into clients</span></>}
           </h2>
         </div>
 
