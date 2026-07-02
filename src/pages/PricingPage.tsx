@@ -361,7 +361,7 @@ function PricingCard({ pkg, index, inView }: { pkg: Package; index: number; inVi
     >
       {pkg.featured && <div className="absolute top-0 left-0 right-0 h-[1px] shimmer-line" />}
       {pkg.badge && (
-        <div className="absolute top-5 right-5 z-10">
+        <div className="flex justify-center pt-5 pb-0">
           <span className="inline-flex items-center text-[0.63rem] font-bold uppercase tracking-[0.1em] px-2.5 py-[5px] rounded-full" style={{ background: 'rgba(12,147,232,0.14)', border: '1px solid rgba(12,147,232,0.28)', color: 'rgba(147,212,253,0.9)' }}>
             {pkg.badge}
           </span>
