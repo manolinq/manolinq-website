@@ -3,7 +3,9 @@ import { Check, ArrowRight, Zap, Globe, Bot, MessageCircle } from 'lucide-react'
 import { useSeo } from '../hooks/useSeo';
 import { useInView } from '../hooks/useInView';
 import PageHeader from '../components/PageHeader';
-import CTABand from '../components/CTABand';
+
+const WHATSAPP_URL =
+  'https://wa.me/32456326720?text=Hey%2C%20I%27m%20interested%20in%20a%20website%20or%20AI%20system.%20Can%20you%20take%20a%20quick%20look%20at%20my%20business%3F';
 
 const packages = [
   {
@@ -117,10 +119,11 @@ export default function PricingPage() {
     path: '/pricing',
   });
 
-  const { ref, inView } = useInView();
-  const { ref: ref2, inView: inView2 } = useInView();
-  const { ref: ref3, inView: inView3 } = useInView();
-  const { ref: ref4, inView: inView4 } = useInView();
+  const { ref: cardsRef, inView: cardsInView } = useInView();
+  const { ref: tableRef, inView: tableInView } = useInView();
+  const { ref: addRef,   inView: addInView   } = useInView();
+  const { ref: faqRef,   inView: faqInView   } = useInView();
+  const { ref: ctaRef,   inView: ctaInView   } = useInView();
 
   return (
     <>
@@ -131,26 +134,26 @@ export default function PricingPage() {
       />
 
       {/* Package cards */}
-      <section ref={ref} className="relative py-12 lg:py-16 section-alt overflow-hidden">
+      <section ref={cardsRef} className="relative py-12 lg:py-14 section-alt overflow-hidden">
         <div className="section-divider absolute bottom-0" style={{ top: 'auto', bottom: 0 }} />
         <div className="max-w-6xl mx-auto px-5 sm:px-7 lg:px-8">
           <div className="grid md:grid-cols-3 gap-4 lg:gap-5 items-stretch">
             {packages.map((pkg, i) => (
-              <PricingCard key={pkg.name} pkg={pkg} index={i} inView={inView} />
+              <PricingCard key={pkg.name} pkg={pkg} index={i} inView={cardsInView} />
             ))}
           </div>
 
-          <p className="text-center mt-10" style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.82rem' }}>
+          <p className="text-center mt-8" style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.82rem' }}>
             Final price depends on content, number of pages, integrations and project scope — request a free audit for a tailored quote.
           </p>
         </div>
       </section>
 
       {/* Comparison table */}
-      <section ref={ref2} className="relative py-20 lg:py-24 overflow-hidden">
+      <section ref={tableRef} className="relative py-14 lg:py-18 overflow-hidden">
         <div className="section-divider absolute top-0" />
         <div className="max-w-5xl mx-auto px-5 sm:px-7 lg:px-8">
-          <div className={`text-center mb-12 transition-all duration-700 ${inView2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`text-center mb-9 transition-all duration-700 ${tableInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="section-tag justify-center">
               <span style={{ display: 'inline-block', width: 4, height: 14, borderRadius: 9999, background: '#0c93e8', flexShrink: 0 }} />
               Compare
@@ -160,26 +163,27 @@ export default function PricingPage() {
             </h2>
           </div>
 
+          {/* Scrollable on mobile */}
           <div
-            className={`overflow-x-auto rounded-2xl transition-all duration-700 ${inView2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-            style={{ background: 'rgba(11,11,21,0.7)', border: '1px solid rgba(255,255,255,0.06)' }}
+            className={`overflow-x-auto rounded-2xl transition-all duration-700 ${tableInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            style={{ background: 'rgba(11,11,21,0.7)', border: '1px solid rgba(255,255,255,0.06)', WebkitOverflowScrolling: 'touch' }}
           >
             <table className="w-full text-left" style={{ minWidth: 560 }}>
               <thead>
                 <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-                  <th className="p-5" style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.78rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Feature</th>
-                  <th className="p-5 text-center" style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.82rem', fontWeight: 600 }}>Starter</th>
-                  <th className="p-5 text-center" style={{ color: 'rgba(54,175,247,0.9)', fontSize: '0.82rem', fontWeight: 700 }}>Business</th>
-                  <th className="p-5 text-center" style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.82rem', fontWeight: 600 }}>Website + AI</th>
+                  <th className="px-5 py-4" style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.78rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Feature</th>
+                  <th className="px-5 py-4 text-center" style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.82rem', fontWeight: 600 }}>Starter</th>
+                  <th className="px-5 py-4 text-center" style={{ color: 'rgba(54,175,247,0.9)', fontSize: '0.82rem', fontWeight: 700, background: 'rgba(12,147,232,0.045)', borderLeft: '1px solid rgba(12,147,232,0.1)', borderRight: '1px solid rgba(12,147,232,0.1)' }}>Business</th>
+                  <th className="px-5 py-4 text-center" style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.82rem', fontWeight: 600 }}>Website + AI</th>
                 </tr>
               </thead>
               <tbody>
                 {comparison.map((row, i) => (
                   <tr key={row.feature} style={{ borderBottom: i === comparison.length - 1 ? 'none' : '1px solid rgba(255,255,255,0.04)' }}>
-                    <td className="p-4" style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.84rem' }}>{row.feature}</td>
-                    <td className="p-4 text-center" style={{ color: row.starter === '—' ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.5)', fontSize: '0.82rem' }}>{row.starter}</td>
-                    <td className="p-4 text-center" style={{ color: row.business === '—' ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.7)', fontSize: '0.82rem', background: 'rgba(12,147,232,0.035)' }}>{row.business}</td>
-                    <td className="p-4 text-center" style={{ color: row.ai === '—' ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.5)', fontSize: '0.82rem' }}>{row.ai}</td>
+                    <td className="px-5 py-3" style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.84rem' }}>{row.feature}</td>
+                    <td className="px-5 py-3 text-center" style={{ color: row.starter === '—' ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.5)', fontSize: '0.82rem' }}>{row.starter}</td>
+                    <td className="px-5 py-3 text-center" style={{ color: row.business === '—' ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.72)', fontSize: '0.82rem', background: 'rgba(12,147,232,0.035)', borderLeft: '1px solid rgba(12,147,232,0.06)', borderRight: '1px solid rgba(12,147,232,0.06)' }}>{row.business}</td>
+                    <td className="px-5 py-3 text-center" style={{ color: row.ai === '—' ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.5)', fontSize: '0.82rem' }}>{row.ai}</td>
                   </tr>
                 ))}
               </tbody>
@@ -189,32 +193,48 @@ export default function PricingPage() {
       </section>
 
       {/* Add-ons */}
-      <section ref={ref3} className="relative py-20 lg:py-24 section-alt overflow-hidden">
+      <section ref={addRef} className="relative py-14 lg:py-18 section-alt overflow-hidden">
         <div className="section-divider absolute top-0" />
         <div className="section-divider absolute bottom-0" style={{ top: 'auto', bottom: 0 }} />
         <div className="max-w-5xl mx-auto px-5 sm:px-7 lg:px-8">
-          <div className={`text-center mb-12 transition-all duration-700 ${inView3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`text-center mb-9 transition-all duration-700 ${addInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="section-tag justify-center">
               <span style={{ display: 'inline-block', width: 4, height: 14, borderRadius: 9999, background: '#0c93e8', flexShrink: 0 }} />
               Add-ons
             </div>
-            <h2 className="text-white font-bold tracking-[-0.03em]" style={{ fontSize: 'clamp(1.7rem, 3.5vw, 2.3rem)' }}>
+            <h2 className="text-white font-bold tracking-[-0.03em] mb-3" style={{ fontSize: 'clamp(1.7rem, 3.5vw, 2.3rem)' }}>
               Need something <span className="electric-gradient-text">extra?</span>
             </h2>
+            <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: '0.9rem' }}>
+              Add-ons can be included depending on your project. We'll quote these clearly before anything starts.
+            </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {addOns.map((a, i) => (
               <div
                 key={a.title}
-                className={`rounded-2xl p-6 transition-all duration-700 ${inView3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-                style={{ background: 'rgba(11,11,21,0.6)', border: '1px solid rgba(255,255,255,0.05)', transitionDelay: `${i * 90}ms` }}
+                className={`rounded-2xl p-5 transition-all duration-700 cursor-default ${addInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+                style={{
+                  background: 'rgba(11,11,21,0.6)',
+                  border: '1px solid rgba(255,255,255,0.05)',
+                  transitionDelay: `${i * 90}ms`,
+                  transition: `opacity 700ms ${i * 90}ms, transform 700ms ${i * 90}ms, box-shadow 250ms, border-color 250ms`,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(12,147,232,0.2)';
+                  e.currentTarget.style.boxShadow = '0 0 28px rgba(12,147,232,0.08)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
               >
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: 'rgba(12,147,232,0.08)', border: '1px solid rgba(12,147,232,0.14)' }}>
-                  <a.icon size={17} strokeWidth={1.75} style={{ color: 'rgba(54,175,247,0.72)' }} />
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center mb-3" style={{ background: 'rgba(12,147,232,0.08)', border: '1px solid rgba(12,147,232,0.14)' }}>
+                  <a.icon size={16} strokeWidth={1.75} style={{ color: 'rgba(54,175,247,0.72)' }} />
                 </div>
-                <h3 className="text-white font-semibold mb-1.5" style={{ fontSize: '0.92rem' }}>{a.title}</h3>
-                <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.82rem', lineHeight: 1.7 }}>{a.desc}</p>
+                <h3 className="text-white font-semibold mb-1" style={{ fontSize: '0.9rem' }}>{a.title}</h3>
+                <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.81rem', lineHeight: 1.68 }}>{a.desc}</p>
               </div>
             ))}
           </div>
@@ -222,10 +242,10 @@ export default function PricingPage() {
       </section>
 
       {/* FAQs */}
-      <section ref={ref4} className="relative py-20 lg:py-24 overflow-hidden">
+      <section ref={faqRef} className="relative py-14 lg:py-18 overflow-hidden">
         <div className="section-divider absolute top-0" />
         <div className="max-w-3xl mx-auto px-5 sm:px-7 lg:px-8">
-          <div className={`text-center mb-12 transition-all duration-700 ${inView4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`text-center mb-9 transition-all duration-700 ${faqInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="section-tag justify-center">
               <span style={{ display: 'inline-block', width: 4, height: 14, borderRadius: 9999, background: '#0c93e8', flexShrink: 0 }} />
               Questions
@@ -235,26 +255,65 @@ export default function PricingPage() {
             </h2>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-2.5">
             {faqs.map((faq, i) => (
               <div
                 key={faq.q}
-                className={`rounded-2xl p-6 transition-all duration-700 ${inView4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+                className={`rounded-2xl p-5 transition-all duration-700 ${faqInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
                 style={{ background: 'rgba(11,11,21,0.6)', border: '1px solid rgba(255,255,255,0.05)', transitionDelay: `${i * 80}ms` }}
               >
-                <h3 className="text-white font-semibold mb-2" style={{ fontSize: '0.98rem', letterSpacing: '-0.015em' }}>{faq.q}</h3>
-                <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.88rem', lineHeight: 1.8 }}>{faq.a}</p>
+                <h3 className="text-white font-semibold mb-1.5" style={{ fontSize: '0.97rem', letterSpacing: '-0.015em' }}>{faq.q}</h3>
+                <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.875rem', lineHeight: 1.78 }}>{faq.a}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <CTABand
-        title="Still unsure which"
-        highlight="package is right?"
-        description="Tell us about your business and we'll recommend the best option — no pressure, no obligation."
-      />
+      {/* Final CTA — no "View Pricing" since visitor is already here */}
+      <section ref={ctaRef} className="relative py-14 lg:py-20 overflow-hidden">
+        <div className="section-divider absolute top-0" />
+
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse at center, rgba(12,147,232,0.07) 0%, transparent 60%)' }}
+        />
+
+        <div
+          className={`relative max-w-2xl mx-auto px-5 sm:px-7 lg:px-8 text-center
+                      transition-all duration-700 ${ctaInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
+          <div className="section-tag justify-center">
+            <span style={{ display: 'inline-block', width: 4, height: 14, borderRadius: 9999, background: '#0c93e8', flexShrink: 0 }} />
+            Ready When You Are
+          </div>
+
+          <h2 className="text-white font-bold leading-[1.1] tracking-[-0.03em] mb-4" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>
+            Still unsure which{' '}
+            <span className="electric-gradient-text">package is right?</span>
+          </h2>
+
+          <p className="mx-auto mb-7" style={{ color: 'rgba(255,255,255,0.45)', fontSize: '1.02rem', lineHeight: 1.8, maxWidth: '34rem' }}>
+            Tell us about your business and we'll recommend the best option — no pressure, no obligation.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link to="/contact" className="btn-primary text-[0.95rem] px-9 py-4 justify-center">
+              Request Free Audit
+              <ArrowRight size={16} strokeWidth={2.5} />
+            </Link>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary text-[0.95rem] px-9 py-4 justify-center"
+            >
+              <MessageCircle size={16} strokeWidth={2} />
+              WhatsApp Us
+            </a>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
@@ -265,7 +324,7 @@ function PricingCard({ pkg, index, inView }: { pkg: Package; index: number; inVi
   const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
     if (pkg.featured) return;
     const el = e.currentTarget;
-    el.style.border = '1px solid rgba(12,147,232,0.22)';
+    el.style.borderColor = 'rgba(12,147,232,0.22)';
     el.style.background = 'linear-gradient(160deg, #0d0d1e 0%, #09090f 100%)';
     el.style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,0.05),0 0 44px rgba(12,147,232,0.09),0 20px 60px rgba(0,0,0,0.35)';
     el.style.transform = 'translateY(-4px)';
@@ -273,7 +332,7 @@ function PricingCard({ pkg, index, inView }: { pkg: Package; index: number; inVi
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     if (pkg.featured) return;
     const el = e.currentTarget;
-    el.style.border = '1px solid rgba(12,147,232,0.13)';
+    el.style.borderColor = 'rgba(12,147,232,0.13)';
     el.style.background = 'linear-gradient(160deg, #0c0c1a 0%, #090910 100%)';
     el.style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,0.04),0 0 20px rgba(12,147,232,0.05)';
     el.style.transform = 'translateY(0)';
@@ -295,7 +354,6 @@ function PricingCard({ pkg, index, inView }: { pkg: Package; index: number; inVi
   return (
     <div
       className={`relative flex flex-col rounded-2xl overflow-hidden transition-all duration-700
-                  ${pkg.featured ? 'order-first md:order-none' : ''}
                   ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
       style={{ ...baseStyle, transitionDelay: `${index * 130}ms` }}
       onMouseEnter={handleMouseEnter}
@@ -310,30 +368,30 @@ function PricingCard({ pkg, index, inView }: { pkg: Package; index: number; inVi
         </div>
       )}
 
-      <div className="flex flex-col flex-1 p-7">
-        <h3 className="text-white font-bold mb-1" style={{ fontSize: '1.1rem', letterSpacing: '-0.02em' }}>{pkg.name}</h3>
-        <p className="mb-5" style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.82rem', lineHeight: 1.7 }}>{pkg.description}</p>
+      <div className="flex flex-col flex-1 p-6">
+        <h3 className="text-white font-bold mb-1" style={{ fontSize: '1.05rem', letterSpacing: '-0.02em' }}>{pkg.name}</h3>
+        <p className="mb-4" style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.82rem', lineHeight: 1.65 }}>{pkg.description}</p>
 
-        <div className="mb-6">
-          <span className="text-white font-bold" style={{ fontSize: '1.75rem', letterSpacing: '-0.03em' }}>{pkg.price}</span>
+        <div className="mb-5">
+          <span className="text-white font-bold" style={{ fontSize: '1.7rem', letterSpacing: '-0.03em' }}>{pkg.price}</span>
         </div>
 
-        <div className="h-px mb-6" style={{ background: pkg.featured ? 'rgba(12,147,232,0.12)' : 'rgba(255,255,255,0.055)' }} />
+        <div className="h-px mb-5" style={{ background: pkg.featured ? 'rgba(12,147,232,0.12)' : 'rgba(255,255,255,0.055)' }} />
 
-        <ul className="space-y-2.5 flex-1 mb-7">
+        <ul className="space-y-2 flex-1 mb-6">
           {pkg.features.map((feat) => (
             <li key={feat} className="flex items-center gap-3">
               <span className="flex-shrink-0 w-[17px] h-[17px] rounded-full flex items-center justify-center" style={{ background: pkg.featured ? 'rgba(12,147,232,0.18)' : 'rgba(12,147,232,0.08)', border: pkg.featured ? '1px solid rgba(12,147,232,0.22)' : 'none' }}>
                 <Check size={8} strokeWidth={3} style={{ color: 'rgba(54,175,247,0.85)' }} />
               </span>
-              <span style={{ color: 'rgba(255,255,255,0.52)', fontSize: '0.845rem', lineHeight: 1.5 }}>{feat}</span>
+              <span style={{ color: 'rgba(255,255,255,0.52)', fontSize: '0.845rem', lineHeight: 1.45 }}>{feat}</span>
             </li>
           ))}
         </ul>
 
         <Link
           to="/contact"
-          className={`flex items-center justify-center gap-2.5 font-semibold py-3.5 px-6 rounded-xl transition-all duration-200 group text-[0.88rem] tracking-[-0.01em]
+          className={`flex items-center justify-center gap-2.5 font-semibold py-3 px-6 rounded-xl transition-all duration-200 group text-[0.875rem] tracking-[-0.01em]
                      ${pkg.featured
                        ? 'bg-electric-500 text-white hover:bg-electric-400 hover:-translate-y-[2px] hover:shadow-[0_4px_24px_rgba(12,147,232,0.45)]'
                        : 'border border-white/[0.18] text-white/80 bg-white/[0.04] hover:text-white hover:border-electric-500/[0.38] hover:bg-white/[0.07] hover:-translate-y-[1px] hover:shadow-[0_2px_16px_rgba(12,147,232,0.12)]'
