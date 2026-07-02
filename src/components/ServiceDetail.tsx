@@ -32,14 +32,7 @@ interface ServiceDetailProps {
   process: { step: string; title: string; description: string }[];
 }
 
-/**
- * Shared layout for the three service detail pages. Keeps a consistent
- * structure: header, features grid, deliverables list, mini-process, FAQs,
- * and a closing CTA — all in the electric-blue glassmorphism design system.
- */
 export default function ServiceDetail(props: ServiceDetailProps) {
-  // useSeo must be called in the page component itself (hook ordering), so we
-  // accept seoTitle/seoDescription here and call the hook in the wrapper page.
   void props.seoTitle;
   void props.seoDescription;
 
@@ -59,19 +52,10 @@ export default function ServiceDetail(props: ServiceDetailProps) {
         </Link>
       </div>
 
-      {/* Features grid */}
       <FeaturesSection features={props.features} />
-
-      {/* What you get */}
       <DeliverablesSection deliverables={props.deliverables} />
-
-      {/* How it works */}
       <ProcessSection process={props.process} />
-
-      {/* FAQs */}
       <FaqSection faqs={props.faqs} />
-
-      {/* Other services */}
       <OtherServices currentPath={props.path} />
 
       <CTABand
@@ -83,14 +67,14 @@ export default function ServiceDetail(props: ServiceDetailProps) {
   );
 }
 
-function FeaturesSection({ features }: { features: Feature[] }) {
+export function FeaturesSection({ features }: { features: Feature[] }) {
   const { ref, inView } = useInView();
 
   return (
-    <section ref={ref} className="relative py-20 lg:py-24 overflow-hidden">
+    <section ref={ref} className="relative py-14 lg:py-18 overflow-hidden">
       <div className="section-divider absolute top-0" />
       <div className="max-w-6xl mx-auto px-5 sm:px-7 lg:px-8">
-        <div className={`text-center max-w-2xl mx-auto mb-14 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`text-center max-w-2xl mx-auto mb-10 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="section-tag justify-center">
             <span style={{ display: 'inline-block', width: 4, height: 14, borderRadius: 9999, background: '#0c93e8', flexShrink: 0 }} />
             What's Included
@@ -104,17 +88,17 @@ function FeaturesSection({ features }: { features: Feature[] }) {
           {features.map((f, i) => (
             <div
               key={f.title}
-              className={`rounded-2xl p-7 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`rounded-2xl p-6 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{
-                background: 'linear-gradient(160deg, #0c0c1a 0%, #090910 100%)',
-                border: '1px solid rgba(255,255,255,0.06)',
+                background: 'linear-gradient(160deg, #0d0d1e 0%, #090910 100%)',
+                border: '1px solid rgba(12,147,232,0.14)',
                 transitionDelay: `${i * 100}ms`,
               }}
             >
-              <h3 className="text-white font-semibold mb-2.5" style={{ fontSize: '1.05rem', letterSpacing: '-0.018em' }}>
+              <h3 className="text-white font-semibold mb-2" style={{ fontSize: '1.03rem', letterSpacing: '-0.018em' }}>
                 {f.title}
               </h3>
-              <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.9rem', lineHeight: 1.8 }}>
+              <p style={{ color: 'rgba(255,255,255,0.48)', fontSize: '0.89rem', lineHeight: 1.78 }}>
                 {f.description}
               </p>
             </div>
@@ -125,15 +109,15 @@ function FeaturesSection({ features }: { features: Feature[] }) {
   );
 }
 
-function DeliverablesSection({ deliverables }: { deliverables: Deliverable[] }) {
+export function DeliverablesSection({ deliverables }: { deliverables: Deliverable[] }) {
   const { ref, inView } = useInView();
 
   return (
-    <section ref={ref} className="relative py-20 lg:py-24 section-alt overflow-hidden">
+    <section ref={ref} className="relative py-14 lg:py-18 section-alt overflow-hidden">
       <div className="section-divider absolute top-0" />
       <div className="section-divider absolute bottom-0" style={{ top: 'auto', bottom: 0 }} />
       <div className="max-w-4xl mx-auto px-5 sm:px-7 lg:px-8">
-        <div className={`text-center mb-14 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`text-center mb-10 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="section-tag justify-center">
             <span style={{ display: 'inline-block', width: 4, height: 14, borderRadius: 9999, background: '#0c93e8', flexShrink: 0 }} />
             Deliverables
@@ -147,10 +131,10 @@ function DeliverablesSection({ deliverables }: { deliverables: Deliverable[] }) 
           {deliverables.map((d, i) => (
             <div
               key={d.text}
-              className={`flex items-center gap-3.5 rounded-xl p-5 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+              className={`flex items-center gap-3.5 rounded-xl px-5 py-4 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
               style={{
                 background: 'rgba(11,11,21,0.6)',
-                border: '1px solid rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.06)',
                 transitionDelay: `${i * 70}ms`,
               }}
             >
@@ -160,7 +144,7 @@ function DeliverablesSection({ deliverables }: { deliverables: Deliverable[] }) 
               >
                 <Check size={11} strokeWidth={3} style={{ color: 'rgba(54,175,247,0.9)' }} />
               </span>
-              <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.88rem', lineHeight: 1.5 }}>{d.text}</span>
+              <span style={{ color: 'rgba(255,255,255,0.62)', fontSize: '0.88rem', lineHeight: 1.5 }}>{d.text}</span>
             </div>
           ))}
         </div>
@@ -169,14 +153,14 @@ function DeliverablesSection({ deliverables }: { deliverables: Deliverable[] }) 
   );
 }
 
-function ProcessSection({ process }: { process: ServiceDetailProps['process'] }) {
+export function ProcessSection({ process }: { process: ServiceDetailProps['process'] }) {
   const { ref, inView } = useInView();
 
   return (
-    <section ref={ref} className="relative py-20 lg:py-24 overflow-hidden">
+    <section ref={ref} className="relative py-14 lg:py-18 overflow-hidden">
       <div className="section-divider absolute top-0" />
       <div className="max-w-4xl mx-auto px-5 sm:px-7 lg:px-8">
-        <div className={`text-center mb-14 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`text-center mb-10 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="section-tag justify-center">
             <span style={{ display: 'inline-block', width: 4, height: 14, borderRadius: 9999, background: '#0c93e8', flexShrink: 0 }} />
             How It Works
@@ -186,11 +170,11 @@ function ProcessSection({ process }: { process: ServiceDetailProps['process'] })
           </h2>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3">
           {process.map((step, i) => (
             <div
               key={step.step}
-              className={`flex gap-5 rounded-2xl p-6 transition-all duration-700 ${inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-6'}`}
+              className={`flex gap-5 rounded-2xl p-5 transition-all duration-700 ${inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-6'}`}
               style={{
                 background: 'linear-gradient(160deg, #0c0c1a 0%, #090910 100%)',
                 border: '1px solid rgba(255,255,255,0.06)',
@@ -198,14 +182,14 @@ function ProcessSection({ process }: { process: ServiceDetailProps['process'] })
               }}
             >
               <div
-                className="flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center font-bold"
-                style={{ background: 'rgba(12,147,232,0.1)', border: '1px solid rgba(12,147,232,0.22)', color: 'rgba(54,175,247,0.9)', fontSize: '0.95rem' }}
+                className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center font-bold"
+                style={{ background: 'rgba(12,147,232,0.1)', border: '1px solid rgba(12,147,232,0.22)', color: 'rgba(54,175,247,0.9)', fontSize: '0.9rem' }}
               >
                 {step.step}
               </div>
               <div>
-                <h3 className="text-white font-semibold mb-1.5" style={{ fontSize: '1.02rem', letterSpacing: '-0.018em' }}>{step.title}</h3>
-                <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.88rem', lineHeight: 1.75 }}>{step.description}</p>
+                <h3 className="text-white font-semibold mb-1" style={{ fontSize: '1rem', letterSpacing: '-0.018em' }}>{step.title}</h3>
+                <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.88rem', lineHeight: 1.72 }}>{step.description}</p>
               </div>
             </div>
           ))}
@@ -215,15 +199,15 @@ function ProcessSection({ process }: { process: ServiceDetailProps['process'] })
   );
 }
 
-function FaqSection({ faqs }: { faqs: FAQ[] }) {
+export function FaqSection({ faqs }: { faqs: FAQ[] }) {
   const { ref, inView } = useInView();
 
   return (
-    <section ref={ref} className="relative py-20 lg:py-24 section-alt overflow-hidden">
+    <section ref={ref} className="relative py-14 lg:py-18 section-alt overflow-hidden">
       <div className="section-divider absolute top-0" />
       <div className="section-divider absolute bottom-0" style={{ top: 'auto', bottom: 0 }} />
       <div className="max-w-3xl mx-auto px-5 sm:px-7 lg:px-8">
-        <div className={`text-center mb-12 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`text-center mb-9 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="section-tag justify-center">
             <span style={{ display: 'inline-block', width: 4, height: 14, borderRadius: 9999, background: '#0c93e8', flexShrink: 0 }} />
             Questions
@@ -233,15 +217,15 @@ function FaqSection({ faqs }: { faqs: FAQ[] }) {
           </h2>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-2.5">
           {faqs.map((faq, i) => (
             <div
               key={faq.q}
-              className={`rounded-2xl p-6 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+              className={`rounded-2xl p-5 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
               style={{ background: 'rgba(11,11,21,0.6)', border: '1px solid rgba(255,255,255,0.05)', transitionDelay: `${i * 90}ms` }}
             >
-              <h3 className="text-white font-semibold mb-2" style={{ fontSize: '0.98rem', letterSpacing: '-0.015em' }}>{faq.q}</h3>
-              <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.88rem', lineHeight: 1.8 }}>{faq.a}</p>
+              <h3 className="text-white font-semibold mb-1.5" style={{ fontSize: '0.97rem', letterSpacing: '-0.015em' }}>{faq.q}</h3>
+              <p style={{ color: 'rgba(255,255,255,0.48)', fontSize: '0.875rem', lineHeight: 1.78 }}>{faq.a}</p>
             </div>
           ))}
         </div>
@@ -251,20 +235,20 @@ function FaqSection({ faqs }: { faqs: FAQ[] }) {
 }
 
 const otherServices = [
-  { label: 'Business Websites',      href: '/services/websites',      desc: 'Full premium sites' },
-  { label: 'Landing Pages',          href: '/services/landing-pages', desc: 'One-page converters' },
-  { label: 'AI Assistants & Automations', href: '/services/ai-systems', desc: 'Chat + workflow AI' },
+  { label: 'Business Websites',           href: '/services/websites',      desc: 'Full premium sites' },
+  { label: 'Landing Pages',               href: '/services/landing-pages', desc: 'One-page converters' },
+  { label: 'AI Assistants & Automations', href: '/services/ai-systems',    desc: 'Chat + workflow AI' },
 ];
 
-function OtherServices({ currentPath }: { currentPath: string }) {
+export function OtherServices({ currentPath }: { currentPath: string }) {
   const { ref, inView } = useInView();
   const others = otherServices.filter((s) => s.href !== currentPath);
 
   return (
-    <section ref={ref} className="relative py-20 lg:py-24 overflow-hidden">
+    <section ref={ref} className="relative py-14 lg:py-18 overflow-hidden">
       <div className="section-divider absolute top-0" />
       <div className="max-w-5xl mx-auto px-5 sm:px-7 lg:px-8">
-        <div className={`text-center mb-12 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`text-center mb-9 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="text-white font-bold tracking-[-0.03em] mb-2" style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}>
             Other <span className="electric-gradient-text">services</span>
           </h2>
@@ -276,7 +260,7 @@ function OtherServices({ currentPath }: { currentPath: string }) {
             <Link
               key={s.href}
               to={s.href}
-              className={`group flex items-center justify-between rounded-2xl p-6 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+              className={`group flex items-center justify-between rounded-2xl p-5 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
               style={{
                 background: 'linear-gradient(160deg, #0c0c1a 0%, #090910 100%)',
                 border: '1px solid rgba(255,255,255,0.06)',
