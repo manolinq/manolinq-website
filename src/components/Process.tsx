@@ -33,7 +33,7 @@ export default function Process() {
   const { ref, inView } = useInView();
 
   return (
-    <section id="process" ref={ref} className="relative py-28 lg:py-36 overflow-hidden">
+    <section id="process" ref={ref} className="relative py-20 lg:py-28 overflow-hidden">
       <div className="section-divider absolute top-0" />
 
       {/* Ambient */}
@@ -48,7 +48,7 @@ export default function Process() {
 
         {/* Header */}
         <div
-          className={`flex flex-col items-center text-center max-w-[600px] mx-auto mb-20
+          className={`flex flex-col items-center text-center max-w-[600px] mx-auto mb-14
                       transition-all duration-700 ${
             inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
@@ -107,23 +107,23 @@ export default function Process() {
 
         {/* CTA */}
         <div
-          className={`mt-14 flex justify-center transition-all duration-700 delay-[650ms] ${
+          className={`mt-10 flex justify-center transition-all duration-700 delay-[650ms] ${
             inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
           <div
             className="w-full max-w-xl rounded-2xl px-8 py-7 flex flex-col items-center"
             style={{
-              background: 'rgba(255,255,255,0.018)',
-              border: '1px solid rgba(255,255,255,0.07)',
+              background: 'linear-gradient(160deg, rgba(12,147,232,0.07) 0%, rgba(255,255,255,0.018) 100%)',
+              border: '1px solid rgba(12,147,232,0.2)',
               boxShadow:
-                'inset 0 1px 0 rgba(255,255,255,0.04),' +
-                '0 0 40px rgba(12,147,232,0.04)',
+                'inset 0 1px 0 rgba(12,147,232,0.1),' +
+                '0 0 50px rgba(12,147,232,0.07)',
             }}
           >
             <p
-              className="mb-5 text-center"
-              style={{ color: 'rgba(226,226,232,0.62)', fontSize: '0.97rem', lineHeight: 1.7 }}
+              className="mb-5 text-center font-medium"
+              style={{ color: 'rgba(226,226,232,0.78)', fontSize: '1.02rem', lineHeight: 1.7 }}
             >
               Ready to see what your website needs?
             </p>

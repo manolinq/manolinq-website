@@ -99,10 +99,11 @@ export default function Hero() {
               <br />
               <span
                 style={{
-                  backgroundImage: 'linear-gradient(100deg, #a8dcfe 0%, #36aff7 42%, #0b8fde 100%)',
+                  backgroundImage: 'linear-gradient(100deg, #cce8ff 0%, #5bc4ff 38%, #1faef5 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
+                  filter: 'drop-shadow(0 0 18px rgba(12,147,232,0.25))',
                 }}
               >
                 Built To Bring You

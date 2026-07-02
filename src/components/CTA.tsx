@@ -6,7 +6,7 @@ export default function CTA() {
   const { ref, inView } = useInView();
 
   return (
-    <section ref={ref} className="relative py-32 lg:py-44 overflow-hidden section-alt">
+    <section ref={ref} className="relative py-20 lg:py-32 overflow-hidden section-alt">
       <div className="section-divider absolute top-0" />
       <div className="section-divider absolute bottom-0" style={{ top: 'auto', bottom: 0 }} />
 
@@ -30,7 +30,7 @@ export default function CTA() {
 
         {/* Eyebrow */}
         <div
-          className={`inline-flex items-center gap-2.5 mb-9 transition-all duration-700 ${
+          className={`inline-flex items-center gap-2.5 mb-6 transition-all duration-700 ${
             inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
@@ -45,7 +45,7 @@ export default function CTA() {
 
         {/* Headline */}
         <h2
-          className={`text-white font-bold leading-[1.06] tracking-[-0.035em] mb-7
+          className={`text-white font-bold leading-[1.06] tracking-[-0.035em] mb-5
                       transition-all duration-700 delay-100 ${
             inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
@@ -57,7 +57,7 @@ export default function CTA() {
 
         {/* Body */}
         <p
-          className={`text-white/40 text-[1.05rem] max-w-[520px] mx-auto mb-12
+          className={`text-white/40 text-[1.05rem] max-w-[520px] mx-auto mb-9
                       leading-[1.8] transition-all duration-700 delay-200 ${
             inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}

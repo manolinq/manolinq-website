@@ -40,11 +40,8 @@ export default function Footer() {
               alt="Manolinq"
               className="h-[30px] w-auto object-contain mb-5"
             />
-            <p className="text-white/28 text-[0.82rem] leading-[1.7] max-w-[200px]">
-              Websites · Landing Pages · AI Systems
-            </p>
-            <p className="text-white/18 text-[0.78rem] leading-[1.75] mt-1.5 max-w-[200px]">
-              We build digital systems that bring businesses more clients, bookings and sales.
+            <p className="text-white/40 text-[0.82rem] leading-[1.75] max-w-[220px]">
+              Premium websites, landing pages and AI systems built to bring businesses more leads, bookings and sales.
             </p>
           </div>
 

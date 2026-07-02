@@ -59,7 +59,7 @@ export default function Packages() {
   const { ref, inView } = useInView();
 
   return (
-    <section id="packages" ref={ref} className="relative py-32 lg:py-40 section-dark overflow-hidden">
+    <section id="packages" ref={ref} className="relative py-20 lg:py-28 section-dark overflow-hidden">
       <div className="section-divider absolute top-0" />
       <div className="section-divider absolute bottom-0" style={{ top: 'auto', bottom: 0 }} />
 
@@ -73,7 +73,7 @@ export default function Packages() {
 
         {/* Header */}
         <div
-          className={`text-center max-w-[600px] mx-auto mb-14 transition-all duration-700 ${
+          className={`text-center max-w-[600px] mx-auto mb-10 transition-all duration-700 ${
             inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >

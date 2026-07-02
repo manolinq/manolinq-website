@@ -24,7 +24,7 @@ interface FormData {
 /* Shared inline styles to avoid multiline className rendering artifacts */
 const labelStyle: React.CSSProperties = {
   display: 'block',
-  color: 'rgba(255,255,255,0.42)',
+  color: 'rgba(255,255,255,0.62)',
   fontSize: '0.68rem',
   fontWeight: 600,
   textTransform: 'uppercase',
@@ -34,11 +34,11 @@ const labelStyle: React.CSSProperties = {
 
 const inputStyle: React.CSSProperties = {
   width: '100%',
-  background: '#0d0d1a',
-  border: '1px solid rgba(255,255,255,0.1)',
+  background: '#0d0d1c',
+  border: '1px solid rgba(255,255,255,0.14)',
   borderRadius: '0.75rem',
   padding: '0.75rem 1rem',
-  color: '#e2e2e8',
+  color: '#e8e8f0',
   fontSize: '0.88rem',
   outline: 'none',
   transition: 'border-color 0.2s, box-shadow 0.2s, background 0.2s',
@@ -60,9 +60,9 @@ function Field({
         value={value} onChange={onChange} placeholder={placeholder}
         style={{
           ...inputStyle,
-          borderColor: focused ? 'rgba(12,147,232,0.55)' : 'rgba(255,255,255,0.1)',
-          boxShadow: focused ? '0 0 0 3px rgba(12,147,232,0.1)' : 'none',
-          background: focused ? '#0f0f20' : '#0d0d1a',
+          borderColor: focused ? 'rgba(12,147,232,0.6)' : 'rgba(255,255,255,0.14)',
+          boxShadow: focused ? '0 0 0 3px rgba(12,147,232,0.12)' : 'none',
+          background: focused ? '#0f0f22' : '#0d0d1c',
         }}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
@@ -89,9 +89,9 @@ function SelectField({
           appearance: 'none',
           cursor: 'pointer',
           color: value ? '#e2e2e8' : 'rgba(255,255,255,0.28)',
-          borderColor: focused ? 'rgba(12,147,232,0.55)' : 'rgba(255,255,255,0.1)',
-          boxShadow: focused ? '0 0 0 3px rgba(12,147,232,0.1)' : 'none',
-          background: focused ? '#0f0f20' : '#0d0d1a',
+          borderColor: focused ? 'rgba(12,147,232,0.6)' : 'rgba(255,255,255,0.14)',
+          boxShadow: focused ? '0 0 0 3px rgba(12,147,232,0.12)' : 'none',
+          background: focused ? '#0f0f22' : '#0d0d1c',
         }}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
@@ -123,9 +123,9 @@ function TextAreaField({
         style={{
           ...inputStyle,
           resize: 'none',
-          borderColor: focused ? 'rgba(12,147,232,0.55)' : 'rgba(255,255,255,0.1)',
-          boxShadow: focused ? '0 0 0 3px rgba(12,147,232,0.1)' : 'none',
-          background: focused ? '#0f0f20' : '#0d0d1a',
+          borderColor: focused ? 'rgba(12,147,232,0.6)' : 'rgba(255,255,255,0.14)',
+          boxShadow: focused ? '0 0 0 3px rgba(12,147,232,0.12)' : 'none',
+          background: focused ? '#0f0f22' : '#0d0d1c',
         }}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
@@ -215,7 +215,7 @@ export default function ContactForm({ animate = true }: { animate?: boolean }) {
           Ready to start?{' '}
           <span className="electric-gradient-text">Get in touch.</span>
         </h2>
-        <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.9rem', lineHeight: 1.85, marginBottom: '2.5rem' }}>
+        <p style={{ color: 'rgba(255,255,255,0.58)', fontSize: '0.9rem', lineHeight: 1.85, marginBottom: '2.5rem' }}>
           Fill in the form and we'll review your business, website or social page within 24 hours with a clear next-step recommendation.
         </p>
 
@@ -227,9 +227,9 @@ export default function ContactForm({ animate = true }: { animate?: boolean }) {
               href={href}
               {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               className="flex items-center gap-3.5 group transition-all duration-200"
-              style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.85)'; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.5)'; }}
+              style={{ color: 'rgba(255,255,255,0.62)', textDecoration: 'none' }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.9)'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.62)'; }}
             >
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-200 group-hover:bg-[#0f0f20]"
@@ -258,7 +258,7 @@ export default function ContactForm({ animate = true }: { animate?: boolean }) {
               Free Website Audit
             </p>
           </div>
-          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.845rem', lineHeight: 1.75 }}>
+          <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.845rem', lineHeight: 1.75 }}>
             Share your current website, Instagram page or business idea and we'll show you what can be improved — free of charge.
           </p>
         </div>

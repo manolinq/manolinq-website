@@ -5,7 +5,7 @@ export default function Contact() {
   const { ref, inView } = useInView();
 
   return (
-    <section id="contact" ref={ref} className="relative py-32 lg:py-40 overflow-hidden">
+    <section id="contact" ref={ref} className="relative py-20 lg:py-28 overflow-hidden">
       <div className="section-divider absolute top-0" />
 
       {/* Ambient bloom */}

@@ -60,7 +60,7 @@ export default function Services() {
   const { ref, inView } = useInView();
 
   return (
-    <section id="services" ref={ref} className="relative py-28 lg:py-36 section-alt overflow-hidden">
+    <section id="services" ref={ref} className="relative py-20 lg:py-28 section-alt overflow-hidden">
       <div className="section-divider absolute top-0" />
       <div className="section-divider absolute bottom-0" style={{ top: 'auto', bottom: 0 }} />
 
@@ -68,7 +68,7 @@ export default function Services() {
 
         {/* Header */}
         <div
-          className={`flex flex-col items-center text-center max-w-[600px] mx-auto mb-16
+          className={`flex flex-col items-center text-center max-w-[600px] mx-auto mb-12
                       transition-all duration-700 ${
             inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
