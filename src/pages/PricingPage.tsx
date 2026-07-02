@@ -360,15 +360,15 @@ function PricingCard({ pkg, index, inView }: { pkg: Package; index: number; inVi
       onMouseLeave={handleMouseLeave}
     >
       {pkg.featured && <div className="absolute top-0 left-0 right-0 h-[1px] shimmer-line" />}
-      {pkg.badge && (
-        <div className="flex justify-center pt-5 pb-0">
-          <span className="inline-flex items-center text-[0.63rem] font-bold uppercase tracking-[0.1em] px-2.5 py-[5px] rounded-full" style={{ background: 'rgba(12,147,232,0.14)', border: '1px solid rgba(12,147,232,0.28)', color: 'rgba(147,212,253,0.9)' }}>
-            {pkg.badge}
-          </span>
-        </div>
-      )}
 
       <div className="flex flex-col flex-1 p-6">
+        {pkg.badge && (
+          <div className="mb-4 flex justify-center">
+            <span className="inline-flex items-center text-[0.63rem] font-bold uppercase tracking-[0.1em] px-2.5 py-[5px] rounded-full" style={{ background: 'rgba(12,147,232,0.14)', border: '1px solid rgba(12,147,232,0.28)', color: 'rgba(147,212,253,0.9)' }}>
+              {pkg.badge}
+            </span>
+          </div>
+        )}
         <h3 className="text-white font-bold mb-1" style={{ fontSize: '1.05rem', letterSpacing: '-0.02em' }}>{pkg.name}</h3>
         <p className="mb-4" style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.82rem', lineHeight: 1.65 }}>{pkg.description}</p>
 
