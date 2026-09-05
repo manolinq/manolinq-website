@@ -425,10 +425,9 @@
             <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             support.manolinq@gmail.com
           </a>
-          <!-- Swap href="contact.html" for your real https://wa.me/<number> link -->
-          <a href="contact.html">
+          <a href="https://wa.me/32456326720?text=Hi%20Manolinq%2C%20I%27d%20like%20to%20discuss%20a%20website%20or%20AI%20system." target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 9.5c.3 2.8 2.7 5.2 5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            WhatsApp — @manolinq
+            WhatsApp — +32 456 32 67 20
           </a>
         </div>
       </div>
@@ -465,7 +464,7 @@
           <button type="submit" class="btn btn-primary">Request Free Audit</button>
           <span class="fine">We reply within 24 hours. No spam, ever.</span>
         </div>
-        <p class="form-status" id="formStatus"></p>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
       </form>
     </div>
   </section>
@@ -494,7 +493,7 @@
         <div class="foot-col">
           <h5>Contact</h5>
           <a href="mailto:support.manolinq@gmail.com">support.manolinq@gmail.com</a>
-          <a href="contact.html">WhatsApp — @manolinq</a>
+          <a href="https://wa.me/32456326720?text=Hi%20Manolinq%2C%20I%27d%20like%20to%20discuss%20a%20website%20or%20AI%20system." target="_blank" rel="noopener noreferrer">WhatsApp — +32 456 32 67 20</a>
         </div>
       </div>
     </div>
@@ -532,23 +531,48 @@
 
   const auditForm = document.getElementById('auditForm');
   if (auditForm) {
-    auditForm.addEventListener('submit', function (e) {
+    auditForm.addEventListener('submit', async function (e) {
       e.preventDefault();
       const f = new FormData(this);
-      const lines = [
-        'Name: ' + f.get('name'),
-        'Business: ' + f.get('business'),
-        'Email: ' + f.get('email'),
-        'WhatsApp: ' + (f.get('whatsapp') || '—'),
-        'Service: ' + f.get('service'),
-        'Budget: ' + (f.get('budget') || '—'),
-        'Message: ' + (f.get('message') || '—')
-      ].join('\n');
-      const mailto = 'mailto:support.manolinq@gmail.com?subject=' +
-        encodeURIComponent('Free Website Audit Request — ' + f.get('business')) +
-        '&body=' + encodeURIComponent(lines);
-      window.location.href = mailto;
-      document.getElementById('formStatus').textContent = 'Opening your email client to send this request…';
+      const status = document.getElementById('formStatus');
+      const button = this.querySelector('button[type="submit"]');
+      if (button.disabled) return;
+      const originalText = button.textContent;
+      button.disabled = true;
+      button.textContent = 'Sending…';
+      status.textContent = 'Sending your request…';
+
+      const payload = {
+        name: f.get('name'),
+        business_name: f.get('business'),
+        email: f.get('email'),
+        whatsapp_number: f.get('whatsapp') || '',
+        service_needed: f.get('service'),
+        budget_range: f.get('budget') || '',
+        message: f.get('message') || '',
+        source: 'manolinq_website',
+        page_url: window.location.href,
+        user_agent: navigator.userAgent
+      };
+
+      try {
+        const response = await fetch('/.netlify/functions/submit-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || result.success !== true) throw new Error(result.error || 'Submission failed');
+
+        this.reset();
+        status.textContent = 'Thank you! Your request was sent. We’ll reply within 24 hours.';
+      } catch (error) {
+        console.error('Lead submission error:', error);
+        status.textContent = 'Something went wrong. Please try again or contact us on WhatsApp.';
+      } finally {
+        button.disabled = false;
+        button.textContent = originalText;
+      }
     });
   }
 
@@ -569,4 +593,3 @@
     }
   }
 </script>
-
