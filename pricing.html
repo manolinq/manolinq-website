@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pricing — Manolinq</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -383,7 +388,43 @@
   .nav-links a.active{color:var(--text);position:relative}
   .nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--accent-2);border-radius:2px}
   @media (max-width:920px){.nav-links a.active::after{display:none}}
+
+
+/* Mobile usability: preserve the existing desktop design. */
+@media (max-width: 920px) {
+  .nav-links {visibility:hidden;max-height:calc(100dvh - 80px);overflow-y:auto}
+  .nav-links.open {visibility:visible}
+  .nav-toggle {min-width:44px;min-height:44px}
+  .contact-grid > *, .hero-grid > *, .form-grid > * {min-width:0}
+}
+@media (max-width: 640px) {
+  .wrap {padding-inline:20px}
+  section {padding-block:56px}
+  .section-head {margin-bottom:32px}
+  .section-head p, .contact-info p {font-size:16px}
+  .announce {font-size:12px;line-height:1.6;padding:9px 16px}
+  .btn {min-height:48px;white-space:normal;text-align:center}
+  .form-card {padding:24px 18px;border-radius:22px}
+  .field label {font-size:14px}
+  .field input, .field select, .field textarea {font-size:16px;min-height:48px}
+  .field textarea {min-height:140px}
+  .form-foot .btn {width:100%}
+  .form-status, .form-foot .fine {font-size:14px;line-height:1.6}
+  .contact-links a {font-size:14px;overflow-wrap:anywhere;min-height:48px}
+  .cta-band {padding:28px 22px}
+  .cta-band .fine {font-size:14px;line-height:1.6}
+  .foot-grid {flex-direction:column;gap:32px}
+  .foot-links {width:100%;gap:28px;justify-content:space-between}
+  .foot-col {min-width:0}
+  .foot-col a {font-size:14px;min-height:44px;overflow-wrap:anywhere}
+  .foot-brand p, .foot-bottom {font-size:14px}
+  .hero-photo-card {gap:10px;flex-wrap:wrap}
+  .reveal-left, .reveal-right {opacity:1;transform:none}
+}
+
 </style>
+</head>
+<body>
 
 <div class="sky" aria-hidden="true"></div>
 
@@ -391,19 +432,19 @@
 
 <header>
   <nav class="wrap">
-    <a href="index.html" class="brand">
+    <a class='brand' href='/'>
       <span class="brand-mark">M</span>
       Manolinq
     </a>
     <div class="nav-links" id="navLinks">
-      <a href="index.html">Home</a>
-      <a href="work.html">Work</a>
-      <a href="pricing.html" class="active">Pricing</a>
-      <a href="process.html">Process</a>
-      <a href="contact.html">Contact</a>
+      <a href='/'>Home</a>
+      <a href='/work'>Work</a>
+      <a class='active' href='/pricing'>Pricing</a>
+      <a href='/process'>Process</a>
+      <a href='/contact'>Contact</a>
     </div>
     <div class="nav-actions">
-      <a href="contact.html" class="btn btn-ghost btn-sm">Get In Touch</a>
+      <a class='btn btn-ghost btn-sm' href='/contact'>Get In Touch</a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -432,7 +473,7 @@
             <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Contact form + WhatsApp buttons</li>
             <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Basic SEO · 1 revision round</li>
           </ul>
-          <a href="contact.html?service=Business%20Website" class="btn btn-ghost btn-block pricing-cta">Start With Starter</a>
+          <a class='btn btn-ghost btn-block pricing-cta' href='/contact?service=Business%20Website'>Start With Starter</a>
         </div>
         <div class="price-card feature reveal-right">
           <span class="price-badge">Most popular</span>
@@ -445,7 +486,7 @@
             <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>WhatsApp integration + analytics</li>
             <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>2 revision rounds</li>
           </ul>
-          <a href="contact.html?service=Business%20Website" class="btn btn-primary btn-block pricing-cta">Request Business Website</a>
+          <a class='btn btn-primary btn-block pricing-cta' href='/contact?service=Business%20Website'>Request Business Website</a>
         </div>
         <div class="price-card reveal-left">
           <h3>Website + AI System</h3>
@@ -457,7 +498,7 @@
             <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>CRM or Notion integration</li>
             <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>3 revisions · 30‑day launch support</li>
           </ul>
-          <a href="contact.html?service=Website%20%2B%20AI%20System" class="btn btn-ghost btn-block pricing-cta">Build My AI System</a>
+          <a class='btn btn-ghost btn-block pricing-cta' href='/contact?service=Website%20%2B%20AI%20System'>Build My AI System</a>
         </div>
       </div>
       <p class="price-note">Final price depends on content, number of pages, integrations and project scope.</p>
@@ -472,7 +513,7 @@
           <h3>Want to know what your site is missing?</h3>
           <p class="fine">Free, no commitment. Send it over and we'll tell you exactly what's working, what isn't, and what to fix first.</p>
         </div>
-        <a href="contact.html" class="btn btn-primary reveal-right">Request Free Audit →</a>
+        <a class='btn btn-primary reveal-right' href='/contact'>Request Free Audit →</a>
       </div>
     </div>
   </section>
@@ -483,7 +524,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a href="index.html" class="brand">
+        <a class='brand' href='/'>
           <span class="brand-mark">M</span>
           Manolinq
         </a>
@@ -492,11 +533,11 @@
       <div class="foot-links">
         <div class="foot-col">
           <h5>Site</h5>
-          <a href="index.html">Home</a>
-          <a href="work.html">Work</a>
-          <a href="pricing.html">Pricing</a>
-          <a href="process.html">Process</a>
-          <a href="contact.html">Contact</a>
+          <a href='/'>Home</a>
+          <a href='/work'>Work</a>
+          <a href='/pricing'>Pricing</a>
+          <a href='/process'>Process</a>
+          <a href='/contact'>Contact</a>
         </div>
         <div class="foot-col">
           <h5>Contact</h5>
@@ -545,3 +586,6 @@
     }
   }
 </script>
+
+</body>
+</html>
