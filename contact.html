@@ -373,6 +373,7 @@
   .form-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:6px}
   .form-foot .fine{font-size:12.5px;color:var(--text-faint)}
   .form-status{font-size:13px;color:var(--accent-2);min-height:18px;margin-top:10px}
+  .hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 
   /* ---------- footer ---------- */
   footer{border-top:1px solid var(--border-soft);padding:48px 0 36px}
@@ -475,6 +476,10 @@
 
       <form class="form-card reveal-right" id="auditForm">
         <div class="form-grid">
+          <div class="hp-field" aria-hidden="true">
+            <label for="company_website">Company website</label>
+            <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+          </div>
           <div class="field"><label>Your name <span class="req">*</span></label><input type="text" name="name" required placeholder="Jordan Vance"></div>
           <div class="field"><label>Business name <span class="req">*</span></label><input type="text" name="business" required placeholder="Vance Studio"></div>
           <div class="field"><label>Email <span class="req">*</span></label><input type="email" name="email" required placeholder="you@business.com"></div>
@@ -536,6 +541,10 @@
           <a href="mailto:support.manolinq@gmail.com">support.manolinq@gmail.com</a>
           <a href="https://wa.me/32456326720?text=Hi%20Manolinq%2C%20I%27d%20like%20to%20discuss%20a%20website%20or%20AI%20system." target="_blank" rel="noopener noreferrer">WhatsApp — +32 456 32 67 20</a>
         </div>
+        <div class="foot-col">
+          <h5>Legal</h5>
+          <a href='/privacy'>Privacy Policy</a>
+        </div>
       </div>
     </div>
     <div class="foot-bottom">
@@ -570,6 +579,8 @@
     }
   }
 
+  const formOpenedAt = Date.now();
+
   const auditForm = document.getElementById('auditForm');
   if (auditForm) {
     auditForm.addEventListener('submit', async function (e) {
@@ -593,7 +604,9 @@
         message: f.get('message') || '',
         source: 'manolinq_website',
         page_url: window.location.href,
-        user_agent: navigator.userAgent
+        user_agent: navigator.userAgent,
+        company_website: f.get('company_website') || '',
+        form_started_at: formOpenedAt
       };
 
       try {
