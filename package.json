@@ -4,11 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "typecheck": "tsc --noEmit -p tsconfig.app.json"
+    "preview": "node scripts/serve.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.app.json",
+    "render": "node scripts/render-pages.mjs",
+    "test": "node scripts/test.mjs",
+    "lint:site": "eslint --config eslint.site.config.mjs scripts tests public/scripts",
+    "test:a11y": "node tests/accessibility.mjs",
+    "package:review": "node scripts/package-review.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
@@ -18,6 +23,7 @@
     "react-router-dom": "^6.30.4"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@eslint/js": "^9.9.1",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
@@ -27,6 +33,8 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.11",
     "globals": "^15.9.0",
+    "jszip": "^3.10.2",
+    "playwright": "^1.63.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.5.3",
