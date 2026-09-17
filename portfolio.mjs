@@ -12,7 +12,8 @@ for(const file of ['pricing.html','process.html','contact.html','privacy.html','
 }
 for(const file of ['index.html','work.html']){
  const current=await readFile(file,'utf8');
- assert.equal(current.match(/<head>[\s\S]*?<\/head>/)[0],baseline.markup[file].head,file+' metadata');
+ const normalizeStylesheet=head=>head.replace(/href="\/styles\/site-[a-f0-9]+\.css"/,'href="/styles/site.css"');
+ assert.equal(normalizeStylesheet(current.match(/<head>[\s\S]*?<\/head>/)[0]),baseline.markup[file].head,file+' metadata (stylesheet fingerprint excepted)');
  if(file==='index.html')assert.equal(current.match(/<section class="hero">[\s\S]*?<\/section>/)[0],baseline.markup[file].hero,'Homepage hero unchanged');
  assert.equal(current,await readFile('site-dist/'+file,'utf8'),'Built page matches source');
 }
