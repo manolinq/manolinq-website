@@ -18,4 +18,5 @@ try {
  await run('tests/accessibility.mjs');
  await run('tests/portfolio-repair.mjs');
  await run('tests/build-integrity.mjs');
+ await run('tests/css-deploy.mjs');
 }finally{server?.kill();}

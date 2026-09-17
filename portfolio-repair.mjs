@@ -57,13 +57,9 @@ try{
   }
  }
  assert.deepEqual(report.networkFailures,[]);
- // Replay the diagnosed failure conditions without changing source assets:
- // a stale stable URL must not replace the fingerprinted sheet; failed images
- // must not force grid tracks to their HTML width attributes.
+ // Failed images must not force grid tracks to their HTML width attributes.
+ // CSS integrity is enforced for every generated page by the build gate.
  const fault=await browser.newContext();
- const oldCss=await readFile('review/pre-polish/site.css','utf8');
- let obsoleteCssRequested=false;
- await fault.route('**/styles/site.css',r=>{obsoleteCssRequested=true;return r.fulfill({contentType:'text/css',body:oldCss});});
  await fault.route('**/images/portfolio/*.webp',r=>r.fulfill({status:404,contentType:'text/html',body:'Simulated unavailable image'}));
  const faultPage=await fault.newPage();
  for(const route of ['/','/work'])for(const width of widths){
@@ -72,7 +68,7 @@ try{
   const state=await faultPage.evaluate(dimensions);report.faultChecks.push({route,...state});
   assert.ok(state.scrollWidth<=width+1,JSON.stringify(state));assert.deepEqual(state.offenders,[]);
  }
- assert.equal(obsoleteCssRequested,false);await fault.close();
+ await fault.close();
  assert.equal(portfolioImages.length,4);
  report.passed=true;
  console.log(JSON.stringify({kind,images:4,stylesheet:true,viewportChecks:report.viewports.length,faultChecks:report.faultChecks.length,protected:report.protected.length,passed:true}));
