@@ -1,0 +1,32 @@
+
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://manolinq.com/#website",
+      "url": "https://manolinq.com/",
+      "name": "Manolinq"
+    },
+    {
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": "https://manolinq.com/#organization",
+      "name": "Manolinq",
+      "url": "https://manolinq.com/",
+      "logo": "https://manolinq.com/public/manolinq-logo-transparent.svg",
+      "email": "support.manolinq@gmail.com",
+      "telephone": "+32 456 32 67 20",
+      "identifier": "BE1040755461",
+      "areaServed": "Belgium",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Sint-Niklaas",
+        "addressCountry": "BE"
+      },
+      "sameAs": [
+        "https://www.instagram.com/manolinq"
+      ]
+    }
+  ]
+}
+

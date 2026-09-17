@@ -1,0 +1,5 @@
+{
+  "netlify/functions/submit-lead.js": "5bbab53bd02c126bd123039ec229b1c29e8169d386ac31b61927fca348eda6f1",
+  "supabase/migrations/20260529150024_create_leads_table.sql": "8258e9fc85fc989b16527e96ad89b09667783f42b063d5b96f46dd1b19729f4b",
+  "review/Manolinq-original-2026-09-16.zip": "25830df0f9dc0d293b5a2f119b472a00aa7edccadccb37e9a724aa801d1373f7"
+}
