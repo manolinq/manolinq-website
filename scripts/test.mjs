@@ -16,4 +16,7 @@ try {
  if(!ready)throw new Error('Local review server did not start');
  await run('tests/verify.mjs');
  await run('tests/accessibility.mjs');
+ await run('tests/carousel.mjs');
+ await run('tests/build-integrity.mjs');
+ await run('tests/css-deploy.mjs');
 }finally{server?.kill();}

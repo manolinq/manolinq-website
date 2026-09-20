@@ -24,7 +24,7 @@ try {
     previewHeight:document.querySelector('.hero-showcase')?.getBoundingClientRect().height,
     heroButtons:[...document.querySelectorAll('.hero-actions .button')].map(el=>({text:el.textContent.trim(),height:el.getBoundingClientRect().height,width:el.getBoundingClientRect().width})),
     prices:[...document.querySelectorAll('.price strong')].map(el=>el.textContent),
-    conceptLabels:[...document.querySelectorAll('.concept-badge')].map(el=>el.textContent)
+    conceptLabels:[...document.querySelectorAll('.carousel-badge')].map(el=>el.textContent)
    }));
    assert.equal(metrics.overflow,false,`${route}@${width}`);
    if(route==='/'){
@@ -34,7 +34,7 @@ try {
     assert.ok(metrics.heroButtons.every(b=>b.height>=48));
    }
    if(route==='/pricing')assert.deepEqual(metrics.prices,['€500','€750','€1.250']);
-   if(route==='/'||route==='/work')assert.deepEqual(metrics.conceptLabels,['Ontwerpconcept','Ontwerpconcept']);
+   if(route==='/'||route==='/work')assert.deepEqual(metrics.conceptLabels,['Interactieve demo','Interactieve demo']);
    report.mobile.push({route,...metrics});
    const name=route==='/'?'home':route.slice(1);
    await page.screenshot({path:`review/polish-${name}-${width}.png`});
