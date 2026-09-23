@@ -14,5 +14,12 @@ export const projects=[
   description:'Een modern websiteconcept met interactieve functionaliteiten en een digitaal aanvraagproces.',
   image:{src:'/images/portfolio/verf-vorm-desktop.webp',alt:'Desktopweergave van Verf & Vorm met de titel Een frisse blik op schilderwerk en een geïllustreerd interieur.',width:1440,height:900},
   mobileImage:{src:'/images/portfolio/verf-vorm-mobile.webp',width:390,height:844}
+ },
+ {
+  type:'concept',id:'clearspace',industry:'Service Business Demo',title:'ClearSpace',
+  url:'https://clearance-demo-three.vercel.app/',label:'Concept Project',
+  description:'Fictief websiteconcept voor een lokale opruimings- en ophaalservice, met duidelijke diensten, responsive design en een interactieve offerteflow.',
+  disclosure:'Fictief portfolio-concept door Manolinq.',
+  image:{src:'/images/portfolio/clearspace-desktop.webp',alt:'ClearSpace homepage met Ruimte maken? Wij tonen hoe het kan en verhuisdozen in een lichte ruimte.',width:1440,height:1000}
  }
 ];
